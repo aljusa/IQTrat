@@ -1,448 +1,561 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
-  Anvil, 
-  ArrowRight, 
-  Activity, 
-  Layers, 
-  Minimize2, 
-  Maximize2, 
-  Settings, 
-  Thermometer, 
+  Flame, 
+  Hammer, 
+  Microscope, 
   ShieldCheck, 
-   
+  Activity, 
+  Factory, 
+  Network,
+  
+  ChevronRight,
+  Target
 } from 'lucide-react';
+import DivCarousel from '../assets/DivCarousel';
 
-// --- Componentes de Diagramas (Visualizaciones) ---
-// MOVIDOS FUERA DEL COMPONENTE APP PARA EVITAR ERRORES DE HOOKS
+/**
+ * TIPOS Y DEFINICIONES
+ */
 
-// 1. Diagrama estático general de objetivos
-const GeneralObjectivesDiagram: React.FC = () => (
-  <div className="w-full h-64 bg-slate-50 border-2 border-slate-200 rounded-lg p-4 grid grid-cols-3 gap-4 place-items-center relative overflow-hidden">
-    {/* Nodos */}
-    <div className="z-10 bg-blue-100 p-4 rounded-lg border border-blue-300 text-center grid place-items-center">
-      <Settings className="w-8 h-8 text-blue-600 mb-2" />
-      <span className="text-sm font-bold text-blue-800">Uso Final</span>
-    </div>
-    
-    <div className="z-10 text-slate-400">
-      <ArrowRight className="w-8 h-8" />
-    </div>
+type SectionId = 
+  | 'general' 
+  | 'mechanical' 
+  | 'microstructure' 
+  | 'stress' 
+  | 'service' 
+  | 'process' 
+  | 'integrator';
 
-    <div className="z-10 bg-emerald-100 p-4 rounded-lg border border-emerald-300 text-center grid place-items-center">
-      <ShieldCheck className="w-8 h-8 text-emerald-600 mb-2" />
-      <span className="text-sm font-bold text-emerald-800">Propiedad Requerida</span>
-    </div>
+interface SectionData {
+  id: SectionId;
+  title: string;
+  icon: React.ElementType;
+  description: React.ReactNode;
+  details: string[];
+}
 
-    {/* Conexión inferior */}
-    <div className="col-span-3 w-full grid grid-cols-1 place-items-center mt-4">
-      <div className="bg-orange-100 px-6 py-2 rounded-full border border-orange-300 text-orange-800 font-semibold text-sm">
-        Tratamiento Térmico (El Puente)
+const SECTIONS: SectionData[] = [
+  {
+    id: 'general',
+    title: 'Introducción',
+    icon: Network,
+    description: 
+    (<DivCarousel>
+     
+       <p>Los tratamientos térmicos <strong>no se aplican de manera arbitraria</strong>. Cada uno responde a objetivos técnicos bien definidos que dependen de la función que desempeñará la pieza metálica. <br />En esta lección se analiza <strong>por qué se selecciona un tratamiento térmico específico</strong> y qué resultados se esperan obtener en términos de propiedades y desempeño del material.</p>  
+   
+    </DivCarousel>),
+    details: [
+      'Entrada: Material Base',
+      'Proceso: Ciclos de Calentamiento/Enfriamiento',
+      'Objetivo: Modificación estructural',
+      'Salida: Propiedades Mejoradas'
+    ]
+  },
+  {
+    id: 'mechanical',
+    title: 'Modificar las propiedades mecánicas',
+    icon: Hammer,
+    description: (
+      <DivCarousel>
+        <p>Uno de los <strong>objetivos principales</strong> de los tratamientos térmicos es <strong>ajustar las propiedades mecánicas</strong> del metal para adecuarlo a una aplicación específica.
+        <br />
+        Mediante el control de la temperatura y el enfriamiento, es posible cambiar el comportamiento del material frente a esfuerzos.</p> 
+        <div><strong>Entre las modificaciones más comunes se encuentran:</strong>
+        <ul>
+          <li>Incrementar la dureza para resistir el desgaste.</li>
+          <li>Aumentar la resistencia mecánica frente a cargas elevadas.</li>
+          <li>Mejorar la ductilidad para permitir deformaciones sin fractura.</li>
+          <li>Incrementar la tenacidad para absorber energía antes de fallar.</li>
+        </ul>
+        Estas variaciones permiten que un mismo material tenga usos muy diferentes según el tratamiento aplicado.</div>
+        </DivCarousel>
+    ),
+    details: [
+      'Aumento significativo de Dureza',
+      'Incremento de Resistencia a la Tracción',
+      'Variación controlada de la Ductilidad'
+    ]
+  },
+  {
+    id: 'microstructure',
+    title: 'Controlar la microestructura del metal',
+    icon: Microscope,
+    description: 
+    (
+      <DivCarousel>
+        <p>Los tratamientos térmicos también buscan modificar la microestructura interna del metal. Esto implica cambios en la forma en que los átomos y las fases se organizan internamente.</p>
+        <div> <strong>Al controlar la microestructura, se puede influir directamente en:</strong>
+        <ul>
+          <li>El tamaño de grano.</li>
+          <li>La distribución de fases internas.</li>
+          <li>La homogeneidad del material.</li>
+        </ul>
+        Una microestructura adecuada permite lograr un equilibrio óptimo entre resistencia y ductilidad, mejorando el desempeño general del metal.</div>
+       </DivCarousel>
+        
+    )
+    ,
+    details: [
+      'Recristalización',
+      'Crecimiento de Grano',
+      'Transformación de Fases (Austenita -> Martensita)'
+    ]
+  },
+  {
+    id: 'stress',
+    title: 'Eliminar tensiones internas',
+    icon: Activity,
+    description: 
+    (
+      <DivCarousel>
+        <p>         Ahora veremos que durante procesos como la fundición, laminación, forjado o mecanizado, los metales pueden acumular tensiones internas que afectan su estabilidad.
+</p>
+        <div> <strong>Estas tensiones pueden provocar:</strong>
+        <ul>
+          <li>Deformaciones inesperadas.</li>
+          <li>Aparición de grietas.</li>
+          <li>Fallas prematuras durante el servicio.</li>
+        </ul>
+        Uno de los objetivos clave del tratamiento térmico es aliviar o eliminar estas tensiones, mejorando la estabilidad dimensional y la confiabilidad del componente.
+      
       </div>
-    </div>
+        
+      </DivCarousel>
+    ),
+    details: [
+      'Estado Inicial: Alta tensión residual',
+      'Mecanismo: Difusión atómica',
+      'Estado Final: Essectionilidad dimensional'
+    ]
+  },
+  {
+    id: 'service',
+    title: 'Mejorar el comportamiento en servicio',
+    icon: ShieldCheck,
+    description: 
+    (
+      <DivCarousel>
+        <p>los metales tratados térmicamente presentan un mejor desempeño bajo condiciones reales de uso. <br /> El tratamiento se selecciona pensando en las exigencias que enfrentará la pieza durante su vida útil.</p>
+        <div><strong>Esto incluye:</strong>
+        <ul>
+          <li>Mayor resistencia al desgaste y a la fatiga.</li>
+          <li>Mejor respuesta ante impactos.</li>
+          <li>Mayor estabilidad frente a cambios de temperatura.</li>
+        </ul>
+        El objetivo final es garantizar que el material cumpla su función durante el tiempo previsto, reduciendo el riesgo de fallas críticas.</div>
+        
     
-    {/* Líneas decorativas SVG */}
-    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
-      <line x1="20%" y1="30%" x2="50%" y2="80%" stroke="black" strokeWidth="2" strokeDasharray="5,5" />
-      <line x1="80%" y1="30%" x2="50%" y2="80%" stroke="black" strokeWidth="2" strokeDasharray="5,5" />
+      </DivCarousel>
+    ),
+    details: [
+      'Resistencia al Desgaste',
+      'Tenacidad al Impacto',
+      'Comportamiento a Fatiga'
+    ]
+  },
+  {
+    id: 'process',
+    title: 'Facilitar procesos de fabricación posteriores',
+    icon: Factory,
+    description:
+    <DivCarousel>
+      <p> Finalmente veremos que algunos tratamientos térmicos se aplican antes del uso final del material, con el propósito de facilitar etapas posteriores del proceso productivo.</p>
+      <div>    <strong>Por ejemplo:</strong>
+        <ul>
+          <li>Aumentar la ductilidad para facilitar el conformado.</li>
+          <li>Reducir la dureza para mejorar la maquinabilidad.</li>
+          <li>Homogeneizar la estructura antes de otros tratamientos.</li>
+        </ul>
+        De esta manera, el tratamiento térmico optimiza tanto el proceso de fabricación como el desempeño final del producto.
+     </div>
+    
+    </DivCarousel>
+    ,
+    details: [
+      'Pre-mecanizado',
+      'Tratamiento Térmico',
+      'Acabado Final'
+    ]
+  },
+  {
+    id: 'integrator',
+    title: 'Cierre de la lección',
+    icon: Target,
+    description: 
+    (
+<DivCarousel>
+  <p> Los objetivos de los tratamientos térmicos abarcan desde la mejora de propiedades mecánicas hasta el control de la microestructura y la eliminación de tensiones internas. <br />Cada tratamiento responde a una necesidad específica, relacionada con el uso final del material y las condiciones de servicio.</p>
+ <p>Con esta base conceptual, el siguiente paso será estudiar los principios físicos que explican cómo la temperatura, el tiempo y el enfriamiento influyen en el comportamiento de los metales.</p>
+        
+        
+      
+</DivCarousel>
+
+    ),
+    details: [
+      'Sinergia de propiedades',
+      'Optimización de costos',
+      'Ciclo de vida del producto'
+    ]
+  }
+];
+
+/**
+ * COMPONENTES DE DIAGRAMAS (RENDERIZADO VISUAL)
+ */
+
+const DiagramGeneral = () => (
+  <div className="w-full h-64 bg-slate-50 border border-slate-200 rounded-lg p-4 grid place-items-center">
+    <svg viewBox="0 0 400 150" className="w-full h-full">
+      {/* Nodos */}
+      <rect x="20" y="55" width="80" height="40" rx="4" fill="#e2e8f0" stroke="#64748b" strokeWidth="2" />
+      <text x="60" y="80" textAnchor="middle" className="text-xs fill-slate-700 font-bold">Tratamiento</text>
+      
+      <path d="M100 75 L140 75" stroke="#94a3b8" strokeWidth="2" markerEnd="url(#arrow)" />
+      
+      <rect x="140" y="55" width="100" height="40" rx="4" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="2" />
+      <text x="190" y="80" textAnchor="middle" className="text-xs fill-blue-800 font-bold">Objetivos Téc.</text>
+      
+      <path d="M240 75 L280 75" stroke="#94a3b8" strokeWidth="2" markerEnd="url(#arrow)" />
+      
+      <rect x="280" y="55" width="100" height="40" rx="4" fill="#dcfce7" stroke="#22c55e" strokeWidth="2" />
+      <text x="330" y="80" textAnchor="middle" className="text-xs fill-green-800 font-bold">Propiedades</text>
+      
+      {/* Definición de flecha */}
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8" />
+        </marker>
+      </defs>
     </svg>
   </div>
 );
 
-// 2. Diagrama estático comparativo de propiedades
-const PropertiesComparisionDiagram: React.FC = () => (
-  <div className="w-full h-64 bg-white p-6 rounded-lg border border-slate-200 grid grid-cols-2 gap-8 items-end">
-    {/* Antes */}
-    <div className="grid gap-2 justify-items-center w-full">
-      <div className="w-full grid grid-cols-2 gap-2 h-32 items-end">
-        <div className="bg-slate-300 h-[40%] w-full rounded-t relative group">
-          <span className="absolute -top-6 left-0 w-full text-center text-xs font-bold text-slate-500">Dureza</span>
-        </div>
-        <div className="bg-blue-300 h-[80%] w-full rounded-t relative group">
-            <span className="absolute -top-6 left-0 w-full text-center text-xs font-bold text-blue-500">Ductilidad</span>
-        </div>
-      </div>
-      <span className="font-semibold text-slate-600 border-t border-slate-300 w-full text-center pt-2">Metal Base</span>
-    </div>
+const DiagramMechanical = () => (
+    <div className="w-full max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-xl p-6">
 
-    {/* Después */}
-    <div className="grid gap-2 justify-items-center w-full">
-      <div className="w-full grid grid-cols-2 gap-2 h-32 items-end">
-        <div className="bg-slate-600 h-[90%] w-full rounded-t relative">
-          <span className="absolute -top-6 left-0 w-full text-center text-xs font-bold text-slate-800">Dureza</span>
-        </div>
-        <div className="bg-blue-600 h-[30%] w-full rounded-t relative">
-            <span className="absolute -top-6 left-0 w-full text-center text-xs font-bold text-blue-800">Ductilidad</span>
-        </div>
-      </div>
-      <span className="font-semibold text-slate-600 border-t border-slate-300 w-full text-center pt-2">Tratado Térmicamente</span>
-    </div>
-  </div>
-);
+      <div className="grid grid-cols-2 gap-10">
 
-// 3. Diagrama estático de microestructura
-const MicrostructureDiagram: React.FC = () => (
-  <div className="w-full h-64 grid grid-cols-2 gap-4">
-    {/* Grano Grueso */}
-    <div className="border-4 border-slate-300 rounded-full bg-slate-50 overflow-hidden relative grid place-items-center">
-      <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0 opacity-50">
-          <path d="M0,0 L40,20 L60,0 L100,20 L100,60 L70,100 L20,80 L0,50 Z" fill="none" stroke="#94a3b8" strokeWidth="1" />
-          <path d="M40,20 L50,50 L20,80" fill="none" stroke="#94a3b8" strokeWidth="1" />
-          <path d="M60,0 L50,50 L70,100" fill="none" stroke="#94a3b8" strokeWidth="1" />
-          <path d="M100,60 L50,50" fill="none" stroke="#94a3b8" strokeWidth="1" />
-      </svg>
-      <div className="bg-slate-800/80 text-white px-2 py-1 rounded text-xs z-10 text-center">
-        Grano Grueso<br/>(Menor Resistencia)
-      </div>
-    </div>
+        {/* ================= ANTES ================= */}
+        <div>
+          <h3 className="text-sm font-semibold text-slate-500 text-center mb-4 tracking-wide">
+            ANTES
+          </h3>
 
-    {/* Grano Fino */}
-    <div className="border-4 border-indigo-300 rounded-full bg-indigo-50 overflow-hidden relative grid place-items-center">
-        <svg viewBox="0 0 100 100" className="w-full h-full absolute inset-0 opacity-50">
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#6366f1" strokeWidth="0.5"/>
-          </pattern>
-          <rect width="100" height="100" fill="url(#grid)" />
-      </svg>
-      <div className="bg-indigo-800/80 text-white px-2 py-1 rounded text-xs z-10 text-center">
-        Grano Fino<br/>(Mayor Resistencia)
-      </div>
-    </div>
-  </div>
-);
+          {/* Área del gráfico */}
+          <div className="relative h-44 grid grid-cols-3 gap-6 items-end border-b border-slate-300 pb-2">
 
-// 4. Diagrama dinámico de tensiones internas
-const InternalStressDiagram: React.FC = () => {
-  // Simulación simple de estado visual
-  const [treated, setTreated] = useState(false);
+            <div className="relative h-full">
+              <div
+                className="absolute bottom-0 w-full bg-slate-400 rounded-t-lg transition-all duration-700"
+                style={{ height: "40%" }}
+              />
+            </div>
 
-  useEffect(() => {
-    const timer = setInterval(() => setTreated(t => !t), 3000);
-    return () => clearInterval(timer);
-  }, []);
+            <div className="relative h-full">
+              <div
+                className="absolute bottom-0 w-full bg-slate-500 rounded-t-lg transition-all duration-700"
+                style={{ height: "50%" }}
+              />
+            </div>
 
-  return (
-    <div className="w-full h-64 bg-slate-900 rounded-lg p-6 grid grid-rows-[auto_1fr] gap-4">
-      <div className="text-center text-white text-sm">
-        Estado: <span className={treated ? "text-emerald-400 font-bold" : "text-red-400 font-bold"}>
-          {treated ? "Tratamiento de Alivio Aplicado" : "Bajo Tensión (Fabricación)"}
-        </span>
-      </div>
-      
-      <div className="relative w-full h-full bg-slate-700 rounded grid place-items-center overflow-hidden">
-        {/* Bloque de Metal */}
-        <div className={`w-32 h-32 bg-slate-400 rounded transition-all duration-1000 grid place-items-center z-10 ${treated ? 'scale-100' : 'scale-95'}`}>
-          <Anvil className="text-slate-600 w-12 h-12" />
-        </div>
-
-        {/* Flechas de Tensión (Animadas) */}
-        {!treated && (
-          <>
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 animate-bounce text-red-500 font-bold">↓↓↓</div>
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce text-red-500 font-bold">↑↑↑</div>
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 animate-pulse text-red-500 font-bold">→→→</div>
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 animate-pulse text-red-500 font-bold">←←←</div>
-          </>
-        )}
-
-        {/* Efecto de Alivio */}
-        {treated && (
-          <div className="absolute inset-0 bg-emerald-500/20 animate-pulse grid place-items-center">
-              <span className="text-emerald-300 font-bold text-lg">Estructura Relajada</span>
+            <div className="relative h-full">
+              <div
+                className="absolute bottom-0 w-full bg-blue-400 rounded-t-lg transition-all duration-700"
+                style={{ height: "80%" }}
+              />
+            </div>
           </div>
-        )}
+
+          {/* Labels */}
+          <div className="grid grid-cols-3 gap-6 mt-2 text-[11px] text-slate-500 text-center">
+            <span>Dureza</span>
+            <span>Resistencia</span>
+            <span>Ductilidad</span>
+          </div>
+
+          <p className="text-xs text-slate-400 text-center mt-3">
+            Metal base
+          </p>
+        </div>
+
+        {/* ================= DESPUÉS ================= */}
+        <div>
+          <h3 className="text-sm font-semibold text-orange-600 text-center mb-4 tracking-wide">
+            DESPUÉS
+          </h3>
+
+          {/* Área del gráfico */}
+          <div className="relative h-44 grid grid-cols-3 gap-6 items-end border-b border-slate-300 pb-2">
+
+            <div className="relative h-full">
+              <div
+                className="absolute bottom-0 w-full bg-orange-500 rounded-t-lg transition-all duration-700"
+                style={{ height: "90%" }}
+              />
+            </div>
+
+            <div className="relative h-full">
+              <div
+                className="absolute bottom-0 w-full bg-orange-400 rounded-t-lg transition-all duration-700"
+                style={{ height: "85%" }}
+              />
+            </div>
+
+            <div className="relative h-full">
+              <div
+                className="absolute bottom-0 w-full bg-slate-300 rounded-t-lg transition-all duration-700"
+                style={{ height: "30%" }}
+              />
+            </div>
+          </div>
+
+          {/* Labels */}
+          <div className="grid grid-cols-3 gap-6 mt-2 text-[11px] text-slate-500 text-center">
+            <span>Dureza</span>
+            <span>Resistencia</span>
+            <span>Ductilidad</span>
+          </div>
+
+          <p className="text-xs text-slate-400 text-center mt-3">
+            Tratado térmicamente
+          </p>
+        </div>
+
       </div>
     </div>
-  );
-};
+);
 
-// 5. Diagrama dinámico de comportamiento en servicio
-const ServiceBehaviorDiagram: React.FC = () => {
-  // Animación simple con CSS
-  return (
-    <div className="w-full h-64 bg-slate-50 border border-slate-200 rounded-lg p-4 relative overflow-hidden">
-      <h4 className="text-xs font-bold text-slate-500 mb-2">Desempeño vs Tiempo</h4>
-      
-      <svg viewBox="0 0 400 200" className="w-full h-full">
-        {/* Ejes */}
-        <line x1="20" y1="180" x2="380" y2="180" stroke="#94a3b8" strokeWidth="2" />
-        <line x1="20" y1="180" x2="20" y2="20" stroke="#94a3b8" strokeWidth="2" />
-        
-        <text x="340" y="195" fontSize="12" fill="#64748b">Tiempo</text>
-        <text x="25" y="30" fontSize="12" fill="#64748b">Vida Útil</text>
-
-        {/* Línea Sin Tratamiento (Decae rápido) */}
-        <path d="M 20 50 Q 150 60 200 180" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
-        <text x="100" y="120" fontSize="10" fill="#ef4444">Sin Tratamiento (Falla prematura)</text>
-
-        {/* Línea Con Tratamiento (Estable) */}
-        <path d="M 20 50 C 150 50, 300 50, 380 100" fill="none" stroke="#10b981" strokeWidth="3">
-          <animate attributeName="stroke-dasharray" from="0, 400" to="400, 0" dur="3s" repeatCount="indefinite" />
-        </path>
-        <text x="250" y="70" fontSize="10" fill="#059669" fontWeight="bold">Tratado (Larga duración)</text>
-
-        {/* Indicador de momento actual */}
-        <circle cx="20" cy="50" r="4" fill="#3b82f6">
-          <animate attributeName="cx" values="20;380" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="cy" values="50;100" keyTimes="0;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1" />
-        </circle>
-      </svg>
-    </div>
-  );
-};
-
-// 6. Diagrama estático de flujo de fabricación
-const ManufacturingFlowDiagram: React.FC = () => (
-  <div className="w-full h-64 grid grid-cols-4 gap-2 items-center">
-    {[
-      { icon: <Layers />, label: "Fundición", color: "bg-slate-200" },
-      { icon: <Settings />, label: "Mecanizado", color: "bg-slate-300" },
-      { icon: <Thermometer />, label: "Tratamiento Térmico", color: "bg-orange-100 border-2 border-orange-400 animate-pulse" },
-      { icon: <ShieldCheck />, label: "Acabado", color: "bg-slate-200" }
-    ].map((step, idx) => (
-      <React.Fragment key={idx}>
-        <div className={`${step.color} h-32 rounded-lg p-2 grid place-items-center text-center shadow-sm`}>
-          <div className="text-slate-700">{step.icon}</div>
-          <span className="text-xs font-bold mt-2 text-slate-800">{step.label}</span>
-        </div>
-        {idx < 3 && (
-          <div className="absolute left-[25%] hidden"> {/* Spacer for layout logic if needed, but grid gap handles it */} </div>
-        )}
-      </React.Fragment>
-    ))}
+const DiagramMicrostructure = () => (
+  <div className="w-full h-64 bg-slate-900 rounded-lg p-4 grid grid-cols-[1fr_auto_1fr] items-center gap-4 relative overflow-hidden">
+    {/* Fondo abstracto de calor */}
+    <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-orange-900/20 to-slate-900 pointer-events-none"></div>
     
-    {/* Flechas superpuestas visualmente con Grid */}
-    <div className="col-span-4 row-start-1 grid grid-cols-4 pointer-events-none h-full items-center">
-        <div className="col-start-1 border-b-4 border-slate-300/50 translate-x-1/2"></div>
-        <div className="col-start-2 border-b-4 border-slate-300/50 translate-x-1/2"></div>
-        <div className="col-start-3 border-b-4 border-slate-300/50 translate-x-1/2"></div>
+    <div className="border border-slate-600 rounded-full h-32 w-32 grid place-items-center bg-slate-800">
+      <div className="grid grid-cols-4 gap-1 p-2">
+        {[...Array(12)].map((_, i) => (
+          <div key={i} className="w-4 h-4 rounded-full border border-slate-500 bg-slate-700/50"></div>
+        ))}
+      </div>
+      <span className="text-xs text-slate-400 mt-2">Grano Fino</span>
+    </div>
+
+    <div className="text-orange-500 grid place-items-center">
+      <Flame size={32} />
+      <span className="text-xs mt-1">Temp + Tiempo</span>
+      <div className="w-20 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent mt-1"></div>
+    </div>
+
+    <div className="border border-orange-600/50 rounded-full h-32 w-32 grid place-items-center bg-slate-800">
+      <div className="grid grid-cols-2 gap-1 p-4">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="w-10 h-10 rounded-sm border border-orange-400 bg-orange-900/30 transform rotate-12"></div>
+        ))}
+      </div>
+      <span className="text-xs text-orange-400 mt-2">Grano Transformado</span>
     </div>
   </div>
 );
 
-// 7. Diagrama estático integrador
-const IntegratorDiagram: React.FC = () => (
-  <div className="w-full h-64 bg-slate-800 rounded-lg p-4 relative grid place-items-center">
-    <div className="grid grid-cols-3 grid-rows-3 w-full h-full gap-4">
-      {/* Centro */}
-      <div className="col-start-2 row-start-2 bg-white rounded-full grid place-items-center z-20 shadow-lg border-4 border-orange-500">
-        <div className="text-center">
-          <Thermometer className="w-6 h-6 mx-auto text-orange-600" />
-          <span className="text-[10px] font-bold block">Tratamiento</span>
+const DiagramStress = () => (
+  <div className="w-full h-64 bg-white border border-slate-200 rounded-lg p-4 grid grid-rows-[1fr_auto_1fr] gap-4">
+    <div className="grid grid-cols-2 gap-4">
+      {/* Pieza con Tensión */}
+      <div className="relative rounded border border-slate-300 h-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-red-300 to-slate-200 opacity-80"></div>
+        <div className="absolute inset-0 grid place-items-center">
+          <span className="font-bold text-white drop-shadow-md">Tensión Alta</span>
+        </div>
+        {/* Vectores de tensión abstractos */}
+        <svg className="absolute inset-0 w-full h-full opacity-30">
+          <path d="M10,10 L30,30 M50,10 L10,50" stroke="white" strokeWidth="2" />
+        </svg>
+      </div>
+
+      {/* Pieza Aliviada */}
+      <div className="relative rounded border border-slate-300 h-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-blue-200 to-slate-100 opacity-80"></div>
+        <div className="absolute inset-0 grid place-items-center">
+          <span className="font-bold text-blue-900 drop-shadow-sm">Aliviada</span>
         </div>
       </div>
+    </div>
+    
+    <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden grid place-items-center">
+        <div className="w-full h-full bg-gradient-to-r from-red-500 to-blue-400"></div>
+    </div>
 
-      {/* Satélites */}
-      <div className="col-start-1 row-start-1 bg-blue-100 rounded p-2 grid place-items-center text-[10px] font-bold text-center z-10 opacity-90">
-        Microestructura
-      </div>
-      <div className="col-start-3 row-start-1 bg-emerald-100 rounded p-2 grid place-items-center text-[10px] font-bold text-center z-10 opacity-90">
-        Propiedades
-      </div>
-      <div className="col-start-1 row-start-3 bg-purple-100 rounded p-2 grid place-items-center text-[10px] font-bold text-center z-10 opacity-90">
-        Fabricación
-      </div>
-      <div className="col-start-3 row-start-3 bg-red-100 rounded p-2 grid place-items-center text-[10px] font-bold text-center z-10 opacity-90">
-        Servicio
-      </div>
-
-      {/* Conectores SVG */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        <line x1="20%" y1="20%" x2="50%" y2="50%" stroke="white" strokeWidth="2" opacity="0.5" />
-        <line x1="80%" y1="20%" x2="50%" y2="50%" stroke="white" strokeWidth="2" opacity="0.5" />
-        <line x1="20%" y1="80%" x2="50%" y2="50%" stroke="white" strokeWidth="2" opacity="0.5" />
-        <line x1="80%" y1="80%" x2="50%" y2="50%" stroke="white" strokeWidth="2" opacity="0.5" />
-      </svg>
+    <div className="grid grid-cols-1 place-items-center">
+        <p className="text-xs text-slate-500 text-center max-w-md">
+            El gráfico superior muestra la transición energética interna. El calentamiento controlado permite la reordenación atómica, eliminando los campos de tensión residuales representados en rojo.
+        </p>
     </div>
   </div>
 );
 
+const DiagramService = () => (
+  <div className="w-full h-64 bg-slate-50 border border-slate-200 rounded-lg p-4 grid grid-cols-3 gap-4 place-items-center">
+    {[
+      { label: 'Carga', val: '85%', color: 'bg-indigo-500' },
+      { label: 'Impacto', val: '60%', color: 'bg-emerald-500' },
+      { label: 'Fatiga', val: '92%', color: 'bg-rose-500' }
+    ].map((item, idx) => (
+      <div key={idx} className="w-full h-full bg-white rounded shadow-sm grid grid-rows-[1fr_auto] p-4 border border-slate-100">
+        <div className="w-full bg-slate-100 rounded-full relative mx-auto w-4/5 h-32 overflow-hidden">
+           <div className={`absolute bottom-0 left-0 w-full ${item.color} transition-all duration-1000`} style={{ height: item.val }}></div>
+           <div className="absolute inset-0 grid place-items-center text-slate-800 font-bold mix-blend-multiply">{item.val}</div>
+        </div>
+        <div className="text-center mt-2 font-semibold text-slate-600">{item.label}</div>
+      </div>
+    ))}
+  </div>
+);
 
-// Definición de tipos para los datos de las secciones
-interface SectionData {
-  id: string;
-  title: string;
-  shortTitle: string;
-  type: 'Estático' | 'Dinámico';
-  purpose: string;
-  description: string;
-  Component: React.FC; // Cambiado de renderDiagram a Component
-}
+const DiagramProcess = () => (
+  <div className="w-full h-64 bg-slate-50 border border-slate-200 rounded-lg p-6">
+    <div className="h-full w-full grid grid-cols-[1fr_auto_1fr_auto_1fr] place-items-center">
+        
+        <div className="text-center group">
+            <div className="w-16 h-16 rounded-full bg-slate-200 grid place-items-center mb-2 group-hover:bg-slate-300 transition-colors">
+                <Factory className="text-slate-600" />
+            </div>
+            <span className="text-xs font-bold text-slate-600">Forja/Fundición</span>
+        </div>
 
-const Lesson3: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<number>(0);
+        <ChevronRight className="text-slate-300" />
 
-  // Datos principales
-  const sections: SectionData[] = [
-    {
-      id: 'obj-gen',
-      title: 'Objetivos Generales',
-      shortTitle: 'Objetivos',
-      type: 'Estático',
-      purpose: 'Relacionar el uso final con el objetivo y propiedades.',
-      description: 'El tratamiento térmico no es un fin en sí mismo, sino un medio para adaptar un material a una función específica. Este diagrama muestra el flujo lógico desde la necesidad del componente hasta la obtención de las propiedades mecánicas requeridas mediante el proceso térmico.',
-      Component: GeneralObjectivesDiagram
-    },
-    {
-      id: 'prop-mec',
-      title: 'Propiedades Mecánicas',
-      shortTitle: 'Propiedades',
-      type: 'Estático',
-      purpose: 'Mostrar cambios en propiedades antes y después.',
-      description: 'Comparación directa de un metal base versus uno tratado. Generalmente, existe un compromiso (trade-off): al aumentar la dureza y resistencia, suele disminuir la ductilidad. El tratamiento busca el equilibrio óptimo.',
-      Component: PropertiesComparisionDiagram
-    },
-    {
-      id: 'micro',
-      title: 'Microestructura',
-      shortTitle: 'Microestructura',
-      type: 'Estático',
-      purpose: 'Comparar grano fino vs grano grueso.',
-      description: 'La estructura interna define las propiedades externas. Un grano fino (derecha) ofrece más barreras al movimiento de dislocaciones, aumentando la resistencia y tenacidad, a diferencia de un grano grueso (izquierda).',
-      Component: MicrostructureDiagram
-    },
-    {
-      id: 'tensiones',
-      title: 'Tensiones Internas',
-      shortTitle: 'Tensiones',
-      type: 'Dinámico',
-      purpose: 'Generación y alivio de tensiones.',
-      description: 'Durante la conformación mecánica o soldadura, se acumulan tensiones residuales (rojo). El recocido o alivio de tensiones permite que la red atómica se relaje (verde), evitando distorsiones o fallas futuras.',
-      Component: InternalStressDiagram
-    },
-    {
-      id: 'servicio',
-      title: 'Comportamiento en Servicio',
-      shortTitle: 'Servicio',
-      type: 'Dinámico',
-      purpose: 'Comparar desempeño en vida útil.',
-      description: 'Gráfico tiempo-desempeño. La línea punteada roja representa un componente que falla prematuramente por fatiga o desgaste. La línea verde muestra cómo el tratamiento extiende la vida útil bajo condiciones reales de carga.',
-      Component: ServiceBehaviorDiagram
-    },
-    {
-      id: 'flujo',
-      title: 'Flujo de Fabricación',
-      shortTitle: 'Flujo',
-      type: 'Estático',
-      purpose: 'Etapa dentro del proceso global.',
-      description: 'El tratamiento térmico es un eslabón crítico. Si se hace demasiado pronto, el mecanizado posterior puede ser difícil; si se hace tarde, se pueden perder tolerancias dimensionales. Su ubicación en el flujo es estratégica.',
-      Component: ManufacturingFlowDiagram
-    },
-    {
-      id: 'integrador',
-      title: 'Visión Integradora',
-      shortTitle: 'Integrador',
-      type: 'Estático',
-      purpose: 'Conexión global de objetivos y efectos.',
-      description: 'Una vista holística. El tratamiento térmico es el núcleo que conecta la ciencia de materiales (microestructura) con la ingeniería de manufactura y la fiabilidad del producto final en servicio.',
-      Component: IntegratorDiagram
-    },
-  ];
+        <div className="text-center group">
+            <div className="w-20 h-20 rounded-full bg-orange-100 border-4 border-orange-500 grid place-items-center mb-2 shadow-lg scale-110">
+                <Flame className="text-orange-600" size={32} />
+            </div>
+            <span className="text-sm font-bold text-orange-700">Tratamiento T.</span>
+        </div>
 
-  // Componente Activo
-  const ActiveComponent = sections[activeTab].Component;
+        <ChevronRight className="text-slate-300" />
+
+        <div className="text-center group">
+            <div className="w-16 h-16 rounded-full bg-slate-200 grid place-items-center mb-2 group-hover:bg-slate-300 transition-colors">
+                <Target className="text-slate-600" />
+            </div>
+            <span className="text-xs font-bold text-slate-600">Mecanizado Final</span>
+        </div>
+
+    </div>
+  </div>
+);
+
+const DiagramIntegrator = () => (
+    <div className="w-full h-64 bg-slate-50 border border-slate-200 rounded-lg relative overflow-hidden grid place-items-center">
+       <svg viewBox="0 0 300 200" className="w-full h-full max-w-md">
+           {/* Center */}
+           <circle cx="150" cy="100" r="30" fill="#f97316" className="opacity-20 animate-pulse" />
+           <circle cx="150" cy="100" r="20" fill="#ea580c" />
+           <text x="150" y="105" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">OBJETIVO</text>
+
+           {/* Nodes */}
+           <g transform="translate(150, 100)">
+               {/* Top */}
+               <line x1="0" y1="-20" x2="0" y2="-60" stroke="#94a3b8" strokeWidth="2" />
+               <circle cx="0" cy="-70" r="15" fill="#3b82f6" />
+               <text x="0" y="-67" textAnchor="middle" fill="white" fontSize="8">Dureza</text>
+
+               {/* Right Bottom */}
+               <line x1="18" y1="10" x2="52" y2="30" stroke="#94a3b8" strokeWidth="2" />
+               <circle cx="60" cy="35" r="15" fill="#10b981" />
+               <text x="60" y="38" textAnchor="middle" fill="white" fontSize="8">Tenaz</text>
+
+               {/* Left Bottom */}
+               <line x1="-18" y1="10" x2="-52" y2="30" stroke="#94a3b8" strokeWidth="2" />
+               <circle cx="-60" cy="35" r="15" fill="#8b5cf6" />
+               <text x="-60" y="38" textAnchor="middle" fill="white" fontSize="8">Costos</text>
+           </g>
+       </svg>
+
+    </div>
+);
+
+/**
+ * COMPONENTE PRINCIPAL DE LA LECCIÓN
+ */
+
+const LessonLayout = () => {
+  const [activesection, setActivesection] = useState<SectionId>('general');
+
+  const activeContent = SECTIONS.find(s => s.id === activesection) || SECTIONS[0];
+
+  const renderDiagram = () => {
+    switch (activesection) {
+      case 'general': return <DiagramGeneral />;
+      case 'mechanical': return <DiagramMechanical />;
+      case 'microstructure': return <DiagramMicrostructure />;
+      case 'stress': return <DiagramStress />;
+      case 'service': return <DiagramService />;
+      case 'process': return <DiagramProcess />;
+      case 'integrator': return <DiagramIntegrator />;
+      default: return <div className="p-4">Diagrama no disponible</div>;
+    }
+  };
 
   return (
-    <div className="w-full h-screen bg-slate-100 text-slate-800 font-sans overflow-hidden grid grid-rows-[auto_1fr]">
-      {/* Header / Navigation Tabs */}
-      <header className="bg-slate-900 text-white shadow-lg z-10">
-        <div className="p-4 border-b border-slate-700">
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <Thermometer className="text-orange-500" />
-            Visualizador de Tratamientos Térmicos
-          </h1>
+    <div className="min-h-screen bg-slate-100 font-sans text-slate-800 grid grid-rows-[auto_auto_1fr] overflow-hidden max-w-6xl mx-auto shadow-2xl my-4 rounded-xl border border-slate-300">
+      
+       {/* Header y Navegación (Grid System) */}
+      <header className="bg-white border-b border-slate-200 top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto p-4">
+          <h1 className="text-2xl font-bold text-slate-800 mb-4 text-center">Objetivos de los tratamientos térmicos en los metales</h1>
+          {/* Grid de Pestañas */}
+          <nav className="grid grid-cols-7 gap-2">
+            {SECTIONS.map((section) => {
+              const Icon = section.icon;
+              const isActive = activesection === section.id;
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => setActivesection(section.id)}
+                  className={`
+                    flex flex-col items-center justify-center p-3 rounded-md transition-all duration-200 text-sm font-medium
+                    ${isActive 
+                      ? 'bg-blue-600 text-white shadow-md transform scale-105' 
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'}
+                  `}
+                >
+                  <Icon size={20} className="mb-1" />
+                </button>
+              );
+            })}
+          </nav>
         </div>
-        
-        {/* Grid de Pestañas - NO FLEX */}
-        <nav className="w-full grid grid-cols-4 md:grid-cols-7 gap-1 p-1 bg-slate-800">
-          {sections.map((section, index) => (
-            <button
-              key={section.id}
-              onClick={() => setActiveTab(index)}
-              className={`
-                py-3 px-2 text-xs md:text-sm font-medium transition-all duration-200 relative
-                grid place-items-center text-center h-full
-                ${activeTab === index 
-                  ? 'bg-slate-100 text-slate-900 rounded-t-sm shadow-[0_-2px_0_0_#f97316_inset]' 
-                  : 'text-slate-400 hover:bg-slate-700 hover:text-white'}
-              `}
-            >
-              {section.shortTitle}
-              {activeTab === index && (
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-orange-500"></div>
-              )}
-            </button>
-          ))}
-        </nav>
       </header>
 
-      {/* Main Content Panel Area */}
-      <main className="w-full h-full overflow-y-auto p-4 md:p-8 grid place-items-center">
-        <div className="w-full max-w-5xl h-full grid grid-rows-[auto_1fr] gap-6">
+
+      {/* MAIN CONTENT AREA: GRID CELL 3 */}
+      <main className="bg-slate-50 p-6 lg:p-8 grid place-items-start h-full">
+        
+        {/* Card Container - GRID Layout interno */}
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 w-full max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.5fr] gap-0 overflow-hidden h-full lg:h-auto">
           
-          {/* Título y Badge del Panel Activo */}
-          <div className="border-b border-slate-300 pb-4 grid grid-cols-[1fr_auto] items-center gap-4">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
-                {sections[activeTab].title}
-              </h2>
-              <p className="text-slate-500 mt-1 flex items-center gap-2">
-                <Activity size={16} />
-                {sections[activeTab].purpose}
-              </p>
-            </div>
-            <span className={`
-              px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider border
-              ${sections[activeTab].type === 'Dinámico' 
-                ? 'bg-purple-100 text-purple-700 border-purple-200' 
-                : 'bg-blue-100 text-blue-700 border-blue-200'}
-            `}>
-              Diagrama {sections[activeTab].type}
-            </span>
-          </div>
+          {/* Columna Izquierda: Texto e Info */}
 
-          {/* Grid de Contenido: Texto (Izq/Arriba) + Visualización (Der/Abajo) */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-8 h-full content-start">
+           <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 grid gap-2">
+          <div className="justify-start items-center">
             
-            {/* Columna de Texto */}
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 h-fit">
-              <h3 className="text-lg font-semibold mb-4 text-slate-700 flex items-center gap-2">
-                <Minimize2 className="w-4 h-4" /> Descripción Detallada
-              </h3>
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                {sections[activeTab].description}
-              </p>
-              
-              <div className="mt-6 p-4 bg-slate-50 rounded border border-slate-100">
-                <h4 className="text-xs font-bold text-slate-400 uppercase mb-2">Claves de interpretación</h4>
-                <ul className="text-sm text-slate-600 space-y-2 list-disc list-inside">
-                  <li>Observa la relación causa-efecto.</li>
-                  {sections[activeTab].type === 'Dinámico' ? (
-                    <li>Nota cómo cambia el estado con el tiempo (animación).</li>
-                  ) : (
-                    <li>Compara los estados inicial y final.</li>
-                  )}
-                </ul>
-              </div>
-            </div>
+            <h2 className="text-2xl font-bold text-slate-800">{activeContent.title}</h2>
+            {activeContent.description}
+            
+          </div>   {renderDiagram()}
+          
+        </div>
 
-            {/* Columna de Visualización */}
-            <div className="bg-white p-2 rounded-xl shadow-lg border-2 border-slate-100 grid place-items-center relative">
-              <div className="absolute top-4 right-4 text-slate-300">
-                <Maximize2 className="w-5 h-5" />
-              </div>
-              <div className="w-full p-4">
-                <ActiveComponent />
-              </div>
-              <div className="w-full bg-slate-50 p-2 text-center border-t border-slate-100 text-xs text-slate-400 italic">
-                Representación visual interactiva: {sections[activeTab].title}
-              </div>
-            </div>
+   
+            
+        
 
-          </div>
+
         </div>
       </main>
     </div>
   );
 };
 
-export default Lesson3;
+export default LessonLayout;

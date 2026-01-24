@@ -37,7 +37,7 @@ interface TabData {
 const TABS: TabData[] = [
   { id: 'contexto', label: 'Contexto', icon: Layers, title: 'Introducción', type: 'Estático',
      content: (
-    <DivCarousel><p>A continuación veremos por qué, en la práctica ingenieril, no basta con seleccionar un material adecuado: también es indispensable asegurar que posea las propiedades necesarias para trabajar de forma segura y eficiente.</p>
+    <DivCarousel><p>En la práctica ingenieril, <strong>no basta con seleccionar un material adecuado</strong>: también es indispensable asegurar que posea las propiedades necesarias para trabajar de forma segura y eficiente.</p>
         <p>Los tratamientos térmicos permiten adaptar los metales a condiciones específicas de servicio, convirtiéndose en un recurso transversal a múltiples ramas de la ingeniería.</p>
         <p>Esta lección analiza por qué son fundamentales, cómo influyen en el rendimiento de los componentes y qué consecuencias tendría su ausencia en aplicaciones reales.</p></DivCarousel>
         
@@ -93,7 +93,7 @@ const TABS: TabData[] = [
      content: 
     (<DivCarousel>
         
-        <p>En esta sección se muestra cómo los tratamientos térmicos son esenciales en múltiples disciplinas, formando parte del proceso normal de fabricación de componentes críticos.</p>  
+        <p>Los tratamientos térmicos son esenciales en múltiples disciplinas, formando parte del <strong>proceso normal de fabricación</strong> de <strong>componentes críticos</strong>.</p>  
         <div>
         <strong>Principales áreas de aplicación:</strong>
         <ul>
@@ -126,7 +126,7 @@ const TABS: TabData[] = [
   { id: 'integrador', label: 'Integrador', icon: ShieldCheck, title: 'Cierre de la lección', type: 'Estático',
      content: (
       <DivCarousel>
-        <p>Los tratamientos térmicos desempeñan un papel estratégico en la ingeniería al permitir que los materiales metálicos alcancen el nivel de desempeño requerido para aplicaciones exigentes. Su relevancia se manifiesta en la optimización de propiedades, la seguridad estructural, la eficiencia operativa y la sostenibilidad económica de los sistemas ingenieriles.</p>
+        <p>Los tratamientos térmicos desempeñan un <strong>papel estratégico</strong> en la ingeniería al permitir que los materiales metálicos <strong>alcancen el nivel de desempeño requerido</strong> para aplicaciones exigentes. Su relevancia se manifiesta en la optimización de propiedades, la <strong>seguridad estructural</strong>, la <strong>eficiencia operativa</strong> y la <strong>sostenibilidad económica</strong> de los sistemas ingenieriles.</p>
         <p>   Esta comprensión de su importancia prepara el camino para analizar, en la siguiente lección, los objetivos específicos que se persiguen al aplicar tratamientos térmicos a los metales.</p>
      
     
@@ -417,10 +417,9 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans grid grid-rows-[auto_1fr] gap-4 pb-8">
       
       {/* Header y Navegación (Grid System) */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+      <header className="bg-white border-b border-slate-200 top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto p-4">
           <h1 className="text-2xl font-bold text-slate-800 mb-4 text-center">Importancia de los tratamientos térmicos en la ingeniería</h1>
-          
           {/* Grid de Pestañas */}
           <nav className="grid grid-cols-7 gap-2">
             {TABS.map((tab) => {
