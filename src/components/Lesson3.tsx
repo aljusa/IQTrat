@@ -9,7 +9,8 @@ import {
   Network,
   
   ChevronRight,
-  Target
+  Target,
+  ArrowRight
 } from 'lucide-react';
 import DivCarousel from '../assets/DivCarousel';
 
@@ -328,34 +329,86 @@ const DiagramMechanical = () => (
 );
 
 const DiagramMicrostructure = () => (
-  <div className="w-full h-64 bg-slate-900 rounded-lg p-4 grid grid-cols-[1fr_auto_1fr] items-center gap-4 relative overflow-hidden">
-    {/* Fondo abstracto de calor */}
-    <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-orange-900/20 to-slate-900 pointer-events-none"></div>
-    
-    <div className="border border-slate-600 rounded-full h-32 w-32 grid place-items-center bg-slate-800">
-      <div className="grid grid-cols-4 gap-1 p-2">
-        {[...Array(12)].map((_, i) => (
-          <div key={i} className="w-4 h-4 rounded-full border border-slate-500 bg-slate-700/50"></div>
-        ))}
-      </div>
-      <span className="text-xs text-slate-400 mt-2">Grano Fino</span>
-    </div>
+  <div className="w-full max-w-3xl mx-auto">
+      {/* Tarjeta Principal */}
+      <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-8 relative overflow-hidden">
+        
+        {/* Cabecera sutil */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-slate-200 via-orange-400 to-orange-600"></div>
+        <h3 className="text-slate-500 text-sm font-semibold uppercase tracking-wider mb-8 text-center">
+          Proceso de Sinterización
+        </h3>
 
-    <div className="text-orange-500 grid place-items-center">
-      <Flame size={32} />
-      <span className="text-xs mt-1">Temp + Tiempo</span>
-      <div className="w-20 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent mt-1"></div>
-    </div>
+        {/* Contenedor del Flujo */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+          
+          {/* ETAPA 1: Grano Fino (Estado Inicial) */}
+          <div className="flex flex-col items-center gap-3">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-slate-200 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="w-32 h-32 rounded-full bg-slate-50 border-2 border-slate-200 flex items-center justify-center shadow-inner relative overflow-hidden">
+                {/* Visualización de partículas pequeñas */}
+                <div className="grid grid-cols-4 gap-2 p-4">
+                  {[...Array(12)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="w-3 h-3 rounded-full bg-slate-300 shadow-sm"
+                    ></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <span className="block font-bold text-slate-700">Grano Fino</span>
+              <span className="text-xs text-slate-400">Estado Inicial</span>
+            </div>
+          </div>
 
-    <div className="border border-orange-600/50 rounded-full h-32 w-32 grid place-items-center bg-slate-800">
-      <div className="grid grid-cols-2 gap-1 p-4">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="w-10 h-10 rounded-sm border border-orange-400 bg-orange-900/30 transform rotate-12"></div>
-        ))}
+          {/* CONECTOR: Proceso (Calor + Tiempo) */}
+          <div className="flex-1 flex flex-col items-center justify-center px-4 relative">
+            {/* Línea de fondo */}
+            <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -z-10 hidden md:block"></div>
+            
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-14 h-14 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center shadow-md border border-orange-100 animate-pulse">
+                <Flame size={28} fill="currentColor" className="fill-orange-500/20" />
+              </div>
+              <div className="text-center bg-white px-2">
+                <span className="text-xs font-bold text-orange-600 uppercase">Calor + Tiempo</span>
+                <div className="flex justify-center mt-1 text-slate-300">
+                  <ArrowRight size={16} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ETAPA 2: Grano Transformado (Estado Final) */}
+          <div className="flex flex-col items-center gap-3">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-orange-200 rounded-full blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="w-32 h-32 rounded-full bg-orange-50/50 border-2 border-orange-200 flex items-center justify-center shadow-sm relative">
+                {/* Visualización de granos unidos/crecidos */}
+                <div className="grid grid-cols-2 gap-1 relative">
+                  {[...Array(4)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className="w-10 h-10 rounded-lg border border-orange-300 bg-orange-400/20 backdrop-blur-sm transform rotate-6 shadow-sm flex items-center justify-center"
+                    >
+                      <div className="w-full h-full bg-gradient-to-br from-white/40 to-transparent"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <span className="block font-bold text-slate-700">Cristalizado</span>
+              <span className="text-xs text-orange-500 font-medium">Transformación Completa</span>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <span className="text-xs text-orange-400 mt-2">Grano Transformado</span>
     </div>
-  </div>
 );
 
 const DiagramStress = () => (
@@ -533,7 +586,7 @@ const LessonLayout = () => {
       <main className="bg-slate-50 p-6 lg:p-8 grid place-items-start h-full">
         
         {/* Card Container - GRID Layout interno */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 w-full max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.5fr] gap-0 overflow-hidden h-full lg:h-auto">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 w-full max-w-5xl mx-auto  overflow-hidden h-full lg:h-auto">
           
           {/* Columna Izquierda: Texto e Info */}
 
