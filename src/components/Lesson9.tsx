@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Layers, Activity, Microscope, ArrowRightLeft, BarChart3, Info } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
+import DivCarousel from '../assets/DivCarousel';
 
 /**
  * --- TIPOS Y DEFINICIONES ---
@@ -13,7 +14,7 @@ interface LessonSection {
   title: string;
   shortTitle: string;
   icon: React.ReactNode;
-  description: string;
+  description:  React.ReactNode;
   details: string;
 }
 
@@ -23,7 +24,22 @@ const LESSON_DATA: LessonSection[] = [
     title: 'Fase Homogénea (Monofásica)',
     shortTitle: 'Fase Única',
     icon: <Layers className="w-4 h-4" />,
-    description: 'Representación de un material con una sola región homogénea claramente identificada como una fase.',
+    description: (
+      <DivCarousel>
+    
+          <p>En los materiales metálicos, la estructura interna no siempre es completamente uniforme. Un mismo metal o aleación puede contener regiones con diferente composición, estructura y propiedades, conocidas como fases. Estas fases determinan la microestructura del material y explican por qué los tratamientos térmicos pueden modificar de forma tan significativa su comportamiento.</p>
+          <p>En esta lección se introduce el concepto de fase y se analiza su papel central en la ingeniería de materiales metálicos.</p>
+          <p>Una fase es una porción homogénea de un material que se distingue del resto por presentar características internas uniformes. Dentro de una fase, las propiedades no cambian abruptamente y la estructura se mantiene coherente.</p>
+          <p>Esta definición permite identificar regiones bien diferenciadas dentro de un metal o aleación.</p>
+          <p><strong>Características de una fase:</strong></p>
+          <ul>
+            <li>Composición química uniforme.</li>
+            <li>Estructura cristalina definida.</li>
+            <li>Propiedades físicas y mecánicas constantes.</li>
+          </ul>
+  
+      </DivCarousel>
+    ),
     details: 'En termodinámica y ciencia de materiales, una fase es una región del espacio (un sistema termodinámico), a lo largo de la cual todas las propiedades físicas de un material son esencialmente uniformes. Aquí vemos un bloque continuo de material puro.'
   },
   {
@@ -31,7 +47,20 @@ const LESSON_DATA: LessonSection[] = [
     title: 'Microestructura Uniforme',
     shortTitle: 'Microestructura',
     icon: <Microscope className="w-4 h-4" />,
-    description: 'Microestructura uniforme correspondiente a un material monofásico, mostrando una única fase continua.',
+    description: (
+      <DivCarousel>
+    
+           <p>Un material monofásico está constituido por una sola fase en toda su estructura. Esto implica que su microestructura es uniforme y que sus propiedades mecánicas son prácticamente las mismas en cualquier punto del material.</p>
+          <p>Los metales puros a temperatura ambiente suelen comportarse como materiales monofásicos.</p>
+          <p><strong>Características principales:</strong></p>
+          <ul>
+            <li>Microestructura homogénea.</li>
+            <li>Propiedades uniformes.</li>
+            <li>Comportamiento mecánico predecible.</li>
+          </ul>
+  
+      </DivCarousel>
+    ),
     details: 'Aunque el material es monofásico, a nivel microscópico está compuesto por granos. Sin embargo, todos los granos tienen la misma composición química y estructura cristalina. Las líneas representan los límites de grano.'
   },
   {
@@ -39,7 +68,22 @@ const LESSON_DATA: LessonSection[] = [
     title: 'Comparativa Mono vs Multi',
     shortTitle: 'Comparativa',
     icon: <ArrowRightLeft className="w-4 h-4" />,
-    description: 'Comparación visual entre una microestructura monofásica y una multifásica para destacar la coexistencia de fases.',
+    description: 
+    (
+      <DivCarousel>
+    
+          <p>Los materiales multifásicos contienen dos o más fases coexistiendo dentro del mismo material. Cada fase posee propiedades propias y contribuye de manera distinta al comportamiento global del metal.</p>
+          <p>La mayoría de las aleaciones metálicas empleadas en ingeniería son multifásicas, ya que esta condición permite combinar resistencia, ductilidad y otras propiedades.</p>
+          <p><strong>Aspectos clave de los materiales multifásicos:</strong></p>
+          <ul>
+            <li>Coexistencia de varias fases.</li>
+            <li>Cada fase aporta propiedades específicas.</li>
+            <li>La proporción y distribución de fases es determinante.</li>
+          </ul>
+  
+      </DivCarousel>
+    )
+    ,
     details: 'A la izquierda, granos uniformes (fase α). A la derecha, vemos una estructura bifásica donde coexisten la fase matriz (α) y precipitados de una segunda fase (β, en oscuro), lo que altera las propiedades del material.'
   },
   {
@@ -47,7 +91,20 @@ const LESSON_DATA: LessonSection[] = [
     title: 'Transformación de Fases',
     shortTitle: 'Transformación',
     icon: <Activity className="w-4 h-4" />,
-    description: 'Animación que muestra la aparición y crecimiento de precipitados durante un tratamiento térmico.',
+    description:  (
+      <DivCarousel>
+    
+         <p>La microestructura describe cómo se organizan las fases dentro del metal. No solo importa qué fases están presentes, sino también su tamaño, forma y distribución, así como su relación con los límites de grano.</p>
+          <p>Los tratamientos térmicos actúan precisamente sobre la microestructura, modificando las fases y su disposición interna.</p>
+          <p><strong>Elementos que definen la microestructura:</strong></p>
+          <ul>
+            <li>Tipo de fases presentes.</li>
+            <li>Tamaño y forma de cada fase.</li>
+            <li>Distribución espacial entre fases y granos.</li>
+          </ul>
+  
+      </DivCarousel>
+    ),
     details: 'Durante el enfriamiento o envejecimiento, la solubilidad del soluto disminuye, forzando la precipitación de la segunda fase. Observa cómo los núcleos crecen con el tiempo (simulado).'
   },
   {
@@ -55,7 +112,24 @@ const LESSON_DATA: LessonSection[] = [
     title: 'Propiedades vs. Fases',
     shortTitle: 'Propiedades',
     icon: <BarChart3 className="w-4 h-4" />,
-    description: 'Relación entre la proporción de fases presentes y las propiedades mecánicas finales.',
+    description:  (
+      <DivCarousel>
+    
+          <p>El control de fases es uno de los objetivos principales de los tratamientos térmicos. Al modificar qué fases aparecen y en qué proporción, es posible ajustar las propiedades finales del material para una aplicación específica.</p>
+          <p>Un control adecuado permite optimizar resistencia, ductilidad, estabilidad térmica y comportamiento frente al desgaste.</p>
+          <p><strong>Razones para controlar las fases:</strong></p>
+          <ul>
+            <li>Definir las propiedades mecánicas finales.</li>
+            <li>Mejorar resistencia al desgaste y a la fatiga.</li>
+            <li>Asegurar estabilidad dimensional y térmica.</li>
+          </ul>
+
+            <p>El concepto de fase es fundamental para comprender el comportamiento de los materiales metálicos y el efecto de los tratamientos térmicos. La presencia, proporción y distribución de fases definen la microestructura y, con ello, las propiedades del material.</p>
+          <p>Con esta base conceptual, la siguiente lección abordará los diagramas de equilibrio de fases, herramientas esenciales para predecir y controlar las transformaciones en los metales.</p>
+        
+  
+      </DivCarousel>
+    ),
     details: 'Aumentar la fracción de la segunda fase dura suele incrementar la resistencia mecánica (Límite elástico) pero disminuir la ductilidad. Mueve el cursor sobre la gráfica para ver valores exactos.'
   }
 ];
@@ -295,8 +369,8 @@ const App: React.FC = () => {
               <Layers size={24} />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-slate-800 tracking-tight">Ciencia de Materiales</h1>
-              <p className="text-sm text-slate-500">Módulo: Diagramas de Fases y Microestructuras</p>
+              <h1 className="text-xl font-bold text-slate-800 tracking-tight">Concepto de fases en los materiales metálicos</h1>
+             
             </div>
           </div>
           {/* Espacio vacío o navegación secundaria si fuera necesario */}
@@ -332,7 +406,7 @@ const App: React.FC = () => {
           
           {/* PANEL IZQUIERDO: Información Textual */}
           <section className="lg:col-span-4 grid gap-6 content-start">
-            <Card title="Concepto Teórico" className="h-full">
+            <Card title="" className="h-full">
               <div className="grid gap-4">
                 <div>
                   <h2 className="text-2xl font-bold text-slate-800 mb-2">{currentData.title}</h2>
@@ -356,7 +430,7 @@ const App: React.FC = () => {
 
           {/* PANEL DERECHO: Renderizado del Diagrama */}
           <section className="lg:col-span-8">
-            <Card title="Visualización Interactiva" className="h-full min-h-[400px]">
+            <Card title="" className="h-full min-h-[400px]">
               <div className="grid h-full content-center">
                 {/* Contenedor del Diagrama */}
                 <div className="w-full bg-slate-50 rounded-xl border border-slate-100 p-6 md:p-8">

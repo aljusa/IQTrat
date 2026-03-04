@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Flame, 
-  Wind, 
-  Shield, 
-  Activity, 
+ 
   Factory, 
-  Settings, 
-  Thermometer, 
+ 
   PlayCircle,
   StopCircle,
-  CheckCircle2,
-  XCircle
+ 
 } from 'lucide-react';
 import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
+
   Tooltip, 
   Legend, 
   ResponsiveContainer,
@@ -156,7 +147,7 @@ const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ chi
 
 // --- COMPONENTES DE DIAGRAMAS (RENDERS) ---
 
-const FurnaceBase = ({ children, type = 'normal' }: { children: React.ReactNode, type?: 'vacuum' | 'normal' }) => (
+const FurnaceBase = ({ children,  }: { children: React.ReactNode, type?: 'vacuum' | 'normal' }) => (
   <svg viewBox="0 0 400 200" className="w-full h-full">
     {/* Paredes del Horno */}
     <defs>

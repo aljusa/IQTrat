@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Layers, Box, Hexagon, Activity, Zap, Maximize, Grid as GridIcon } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import DivCarousel from '../assets/DivCarousel';
 
 // --- Tipos e Interfaces ---
 
@@ -10,7 +11,7 @@ interface LessonSection {
   id: SectionId;
   title: string;
   shortTitle: string;
-  description: string;
+  description: React.ReactNode;
   details: string[];
   icon: React.ReactNode;
 }
@@ -22,7 +23,23 @@ const sections: LessonSection[] = [
     id: 'intro',
     title: 'Estructura Cristalina',
     shortTitle: 'Estructura',
-    description: 'Arreglo regular y repetitivo de átomos en el espacio.',
+    description: (
+      <DivCarousel>
+        
+          <p>Los metales no son materiales continuos y homogéneos a escala microscópica. Su comportamiento mecánico y térmico depende de cómo están organizados sus átomos en el espacio. Esta organización ordenada se conoce como estructura cristalina y constituye la base para comprender la respuesta de los metales a los tratamientos térmicos.</p>
+          <p>En esta lección se analiza cómo la estructura cristalina influye directamente en las propiedades mecánicas y físicas de los materiales metálicos.</p>
+             <p>La estructura cristalina es la disposición regular, ordenada y repetitiva de los átomos dentro de un metal. Esta organización no es aleatoria, sino que sigue un patrón geométrico definido que se repite en las tres dimensiones del espacio.</p>
+          <p>La forma en que los átomos se acomodan determina la manera en que el metal se deforma, resiste esfuerzos y responde al calor.</p>
+          <div><p><strong>Características clave:</strong></p>
+          <ul>
+            <li>Organización atómica tridimensional.</li>
+            <li>Repetición periódica del arreglo atómico.</li>
+            <li>Interacción definida entre átomos vecinos.</li>
+          </ul></div>
+          
+        
+      </DivCarousel>
+    ),
     details: [
       'Los átomos se organizan en patrones tridimensionales periódicos.',
       'Define las propiedades fundamentales del material.',
@@ -34,7 +51,19 @@ const sections: LessonSection[] = [
     id: 'unit-cell',
     title: 'Celda Unitaria',
     shortTitle: 'Celda 3D',
-    description: 'La unidad básica estructural que se repite.',
+    description: (
+      <DivCarousel>
+          <p>La celda unitaria es la porción más pequeña de la estructura cristalina que contiene toda la información geométrica del cristal. Al repetirse de manera continua en todas las direcciones, forma la red cristalina completa del metal.</p>
+          <p>El estudio de la celda unitaria permite comparar diferentes estructuras cristalinas de forma clara y simplificada.</p>
+          <div> <p><strong>Aspectos relevantes de la celda unitaria:</strong></p>
+          <ul>
+            <li>Representa la simetría del cristal.</li>
+            <li>Define distancias y posiciones atómicas.</li>
+            <li>Facilita la clasificación de estructuras cristalinas.</li>
+          </ul></div>
+          <p>La mayoría de los metales cristalizan en tres tipos de estructuras fundamentales. Cada una genera comportamientos mecánicos distintos debido a la forma en que los átomos se acomodan.</p>
+      </DivCarousel>
+    ),
     details: [
       'Representación simplificada de la simetría del cristal.',
       'Definida por parámetros de red (a, b, c) y ángulos.',
@@ -46,7 +75,18 @@ const sections: LessonSection[] = [
     id: 'bcc',
     title: 'Cúbica Centrada en el Cuerpo (BCC)',
     shortTitle: 'BCC',
-    description: 'Átomos en los vértices y uno en el centro.',
+    description: (
+      <DivCarousel>
+             <p>En esta estructura, los átomos se ubican en los ocho vértices del cubo y uno en el centro. Esta disposición proporciona alta resistencia, pero limita la facilidad de deformación.</p>
+          <p><strong>Características principales:</strong></p>
+          <div><ul>
+            <li>Alta resistencia mecánica.</li>
+            <li>Menor ductilidad.</li>
+            <li>Presente en el hierro a temperatura ambiente.</li>
+          </ul></div>
+          
+      </DivCarousel>
+    ),
     details: [
       'Número de coordinación: 8.',
       'Factor de empaquetamiento: 0.68.',
@@ -58,7 +98,17 @@ const sections: LessonSection[] = [
     id: 'bcc-fcc',
     title: 'Comparativa BCC vs FCC',
     shortTitle: 'BCC vs FCC',
-    description: 'Diferencias en densidad y planos de deslizamiento.',
+    description:  (
+      <DivCarousel>
+          <p>Los átomos se localizan en los vértices del cubo y en el centro de cada una de sus caras. Esta estructura favorece el deslizamiento atómico, permitiendo grandes deformaciones.</p>
+          <div>  <p><strong>Características principales:</strong></p>
+          <ul>
+            <li>Alta ductilidad.</li>
+            <li>Excelente conformabilidad.</li>
+            <li>Presente en aluminio, cobre y níquel.</li>
+          </ul></div>
+              </DivCarousel>
+    ),
     details: [
       'FCC es más compacta (0.74) que BCC (0.68).',
       'FCC es generalmente más dúctil debido a más sistemas de deslizamiento.',
@@ -70,7 +120,18 @@ const sections: LessonSection[] = [
     id: 'hcp',
     title: 'Hexagonal Compacta (HCP)',
     shortTitle: 'HCP',
-    description: 'Geometría basada en prismas hexagonales.',
+    description: (
+      <DivCarousel>    
+          <p>Esta estructura presenta un empaquetamiento denso, pero con menos planos de deslizamiento disponibles. Como resultado, el material suele ser menos dúctil y presenta comportamiento direccional.</p>
+          <div>  <p><strong>Características principales:</strong></p>
+          <ul>
+            <li>Menor ductilidad.</li>
+            <li>Comportamiento anisotrópico.</li>
+            <li>Presente en magnesio y titanio.</li>
+          </ul></div>
+        
+      </DivCarousel>
+    ),
     details: [
       'Factor de empaquetamiento: 0.74 (igual que FCC).',
       'Menos sistemas de deslizamiento, lo que implica menor ductilidad.',
@@ -82,7 +143,21 @@ const sections: LessonSection[] = [
     id: 'grains',
     title: 'Dinámica de Granos',
     shortTitle: 'Granos (Dinámico)',
-    description: 'Formación y crecimiento durante tratamiento térmico.',
+    description: (
+      <DivCarousel>
+     
+          <p>En los metales reales, la estructura cristalina no es un solo cristal continuo, sino un conjunto de muchos cristales pequeños llamados granos. Las regiones donde se encuentran granos con distinta orientación se conocen como límites de grano.</p>
+          <p>Estos límites influyen directamente en la resistencia mecánica y en la difusión atómica durante los tratamientos térmicos.</p>
+          <div><p><strong>Efectos de los granos y límites de grano:</strong></p>
+          <ul>
+            <li>Incremento de la resistencia mecánica.</li>
+            <li>Influencia en la difusión de átomos.</li>
+            <li>Modificación mediante tratamientos térmicos.</li>
+          </ul></div>
+          
+       
+      </DivCarousel>
+    ),
     details: [
       'Nucleación: Aparecen nuevos cristales.',
       'Crecimiento: Los cristales consumen la matriz deformada.',
@@ -94,7 +169,23 @@ const sections: LessonSection[] = [
     id: 'properties',
     title: 'Propiedades Mecánicas',
     shortTitle: 'Interactivo',
-    description: 'Efecto de la estructura y calor en el rendimiento.',
+    description: (
+      <DivCarousel>
+       
+       
+          <p>La estructura cristalina condiciona cómo un metal responde al calentamiento y al enfriamiento. Determina qué transformaciones microestructurales son posibles y cómo cambian las propiedades mecánicas.</p>
+          <p>Por ello, comprender la estructura cristalina es esencial para diseñar tratamientos térmicos efectivos.</p>
+          <div> <p><strong>Relación con los tratamientos térmicos:</strong></p>
+          <ul>
+            <li>Influye en la deformación y resistencia.</li>
+            <li>Controla la respuesta a la temperatura.</li>
+            <li>Define las transformaciones microestructurales posibles.</li>
+          </ul></div>
+         
+       
+          
+      </DivCarousel>
+    ),
     details: [
       'Interactúa con el gráfico para ver el efecto del tratamiento.',
       'Recocido: Aumenta ductilidad, baja resistencia.',
@@ -349,12 +440,12 @@ const InteractiveProperties = () => {
                         <Tooltip cursor={{ fill: '#f1f5f9' }} />
                         <Legend />
                         <Bar dataKey="Resistencia" fill="#ef4444" name="Resistencia (MPa x10)" radius={[4, 4, 0, 0]} >
-                            {getData().map((entry, index) => (
+                            {getData().map(( index) => (
                                 <Cell key={`cell-${index}`} fill={treatment === 'Temple' ? '#b91c1c' : '#ef4444'} />
                             ))}
                         </Bar>
                         <Bar dataKey="Ductilidad" fill="#3b82f6" name="Ductilidad (%)" radius={[4, 4, 0, 0]} >
-                             {getData().map((entry, index) => (
+                             {getData().map(( index) => (
                                 <Cell key={`cell-${index}`} fill={treatment === 'Recocido' ? '#2563eb' : '#3b82f6'} />
                             ))}
                         </Bar>
@@ -374,12 +465,10 @@ const Header = () => (
     <header className="bg-slate-900 text-white p-6 shadow-md rounded-xl mb-4">
         <div className="flex items-center justify-between">
             <div>
-                <h1 className="text-2xl font-bold tracking-tight text-blue-400">DiagramtoReact</h1>
-                <p className="text-slate-400 text-sm mt-1">Plataforma Educativa: Ciencia de Materiales</p>
+                <h1 className="text-2xl font-bold tracking-tight text-blue-400">Estructura cristalina de los metales</h1>
+           
             </div>
-            <div className="hidden md:block bg-slate-800 p-2 rounded-lg text-xs font-mono text-slate-300">
-                v1.0.4 | TypeScript
-            </div>
+        
         </div>
     </header>
 );
@@ -453,7 +542,7 @@ export default function App() {
                     
                     {/* Panel de Información (Izquierda) */}
                     <div className="lg:col-span-4 flex flex-col gap-4">
-                        <Card title="Concepto Teórico" className="h-full">
+                        <Card title="" className="h-full">
                             <h2 className="text-xl font-bold text-slate-800 mb-2">{activeSection.title}</h2>
                             <p className="text-slate-600 mb-6 leading-relaxed">
                                 {activeSection.description}
@@ -475,7 +564,7 @@ export default function App() {
 
                     {/* Panel de Visualización (Derecha) */}
                     <div className="lg:col-span-8 flex flex-col h-full">
-                        <Card title="Visualización" className="h-full bg-slate-50/50">
+                        <Card title="" className="h-full bg-slate-50/50">
                             <div className="w-full h-[400px] lg:h-full min-h-[400px]">
                                 <DiagramRender sectionId={activeTab} />
                             </div>

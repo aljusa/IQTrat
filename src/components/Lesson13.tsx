@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Flame, 
-  Snowflake, 
   Layers, 
-  Activity, 
+ 
   ArrowDownCircle, 
   Info,
   Settings,
@@ -20,9 +19,7 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
-  ScatterChart,
-  Scatter,
-  ZAxis
+ 
 } from 'recharts';
 
 // --- Types & Interfaces ---

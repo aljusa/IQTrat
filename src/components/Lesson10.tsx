@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Info, Play, RefreshCw, Thermometer, Activity } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Info, Play, RefreshCw,  Activity } from 'lucide-react';
+import DivCarousel from '../assets/DivCarousel';
 
 // --- TIPOS Y INTERFACES ---
 
@@ -15,18 +16,14 @@ interface TabData {
   id: string;
   title: string;
   description: string;
-  details: string;
+  details: React.ReactNode;
 }
 
 // --- CONSTANTES DEL DIAGRAMA ---
 // Sistema Eutéctico Simple Simulado
 // Eje X: 0 a 100 (% B)
 // Eje Y: 0 a 1000 (°C)
-const EUTECTIC_POINT = { x: 50, y: 400 };
-const MELT_A = { x: 0, y: 800 };
-const MELT_B = { x: 100, y: 700 };
-const MAX_TEMP = 1000;
-const MIN_TEMP = 200;
+
 
 // --- UTILS ---
 
@@ -403,31 +400,111 @@ const TABS: TabData[] = [
     id: 'static', 
     title: 'Regiones', 
     description: 'Diagrama Estático de Equilibrio',
-    details: 'Identificación de las regiones de fase estable: Líquido, Sólido Alpha, Sólido Beta y las zonas bifásicas. El punto eutéctico representa la temperatura más baja a la que el líquido puede existir.'
+    details:
+    (
+      <DivCarousel>
+        
+          <p>Los diagramas de equilibrio de fases son herramientas fundamentales en la ingeniería de materiales porque permiten visualizar cómo cambia la estructura interna de un material metálico cuando varían la temperatura y la composición química. A partir de ellos es posible anticipar qué fases estarán presentes y bajo qué condiciones, lo cual resulta clave para comprender y diseñar tratamientos térmicos.</p>
+          <p>En esta lección se presentan los elementos básicos necesarios para interpretar estos diagramas y entender su utilidad práctica.</p>
+             <p>Un diagrama de equilibrio de fases es una representación gráfica que describe el estado estable de un material metálico bajo diferentes condiciones. Muestra de manera ordenada qué fases existen y cómo se relacionan entre sí cuando el sistema alcanza el equilibrio térmico.</p>
+          <p>Estos diagramas se construyen experimentalmente y resumen una gran cantidad de información sobre el comportamiento del material.</p>
+          <div>  <p><strong>Información que proporciona un diagrama de fases:</strong></p>
+          <ul>
+            <li>Fases presentes en el material.</li>
+            <li>Condiciones de temperatura y composición.</li>
+            <li>Relaciones de equilibrio entre fases.</li>
+          </ul></div>
+        
+         
+      </DivCarousel>
+    )
   },
   { 
     id: 'points', 
     title: 'Puntos', 
     description: 'Coordenadas Temperatura-Composición',
-    details: 'Visualización de estados específicos del material. Cada punto (x, y) determina inequívocamente la fase o mezcla de fases presentes en condiciones de equilibrio termodinámico.'
+    details:  (
+      <DivCarousel>
+        
+        <p>Los diagramas de fases más comunes se representan en dos dimensiones. Cada eje corresponde a una variable fundamental que controla el comportamiento del material.</p>
+          <p>La lectura correcta de estos ejes es el primer paso para interpretar cualquier diagrama.</p>
+          <div> <p><strong>Elementos básicos de los ejes:</strong></p>
+          <ul>
+            <li>Eje vertical: temperatura.</li>
+            <li>Eje horizontal: composición química (porcentaje de los componentes).</li>
+          </ul>
+          <p>Cada punto del diagrama representa una condición específica del material.</p>
+       
+</div>
+         
+      </DivCarousel>
+    )
   },
   { 
     id: 'dynamic', 
     title: 'Dinámico', 
     description: 'Efecto de la Temperatura',
-    details: 'Desplaza el control deslizante para simular el calentamiento o enfriamiento isoplético (composición constante). Observa cómo el material cruza las líneas de liquidus y solidus.'
+    details: (
+      <DivCarousel>
+        
+          <p>Dentro de un diagrama de fases se distinguen zonas y líneas que indican el estado del material. Estas regiones permiten saber si el material se encuentra en una sola fase o en una combinación de fases.</p>
+          <p>Las líneas separan condiciones donde ocurren transformaciones internas al variar la temperatura o la composición.</p>
+          <div> <p><strong>Componentes principales:</strong></p>
+          <ul>
+            <li>Regiones monofásicas: una sola fase estable.</li>
+            <li>Regiones bifásicas: coexistencia de dos fases.</li>
+            <li>Líneas de transformación: límites donde cambian las fases presentes.</li>
+          </ul></div>
+         
+       
+       
+      </DivCarousel>
+    )
   },
   { 
     id: 'interactive', 
     title: 'Ciclo', 
     description: 'Simulación de Ciclo Térmico',
-    details: 'Relación directa entre un perfil de temperatura vs tiempo (tratamiento térmico) y la trayectoria correspondiente dentro del diagrama de fases.'
+    details: (
+      <DivCarousel>
+        
+            <p>Los diagramas de equilibrio de fases sirven como guía para el diseño de tratamientos térmicos. Permiten seleccionar temperaturas de calentamiento adecuadas y anticipar las fases que se formarán durante procesos lentos de enfriamiento.</p>
+          <p>Aunque en la práctica industrial no siempre se alcanza el equilibrio completo, estos diagramas ofrecen una referencia indispensable.</p>
+          <div> <p><strong>Aplicaciones principales:</strong></p>
+          <ul>
+            <li>Elección de temperaturas de tratamiento.</li>
+            <li>Predicción de fases formadas.</li>
+            <li>Comprensión del origen de microestructuras observadas.</li>
+          </ul>
+       </div>
+         
+       
+      </DivCarousel>
+    )
   },
   { 
     id: 'compare', 
     title: 'Comparativo', 
     description: 'Equilibrio vs No-Equilibrio',
-    details: 'El diagrama de fases asume enfriamiento infinitamente lento. En procesos industriales rápidos (temple), las transformaciones pueden suprimirse, generando estructuras fuera de equilibrio.'
+    details: (
+      <DivCarousel>
+        
+       
+          <p>Es importante reconocer que los diagramas de equilibrio describen situaciones ideales. No consideran el efecto del tiempo ni la rapidez de los cambios térmicos, factores clave en muchos tratamientos reales.</p>
+          <p>Por esta razón, deben complementarse con otros conceptos relacionados con transformaciones fuera del equilibrio.</p>
+         <div><p><strong>Principales limitaciones:</strong></p>
+          <ul>
+            <li>Representan solo condiciones de equilibrio.</li>
+            <li>No describen enfriamientos rápidos.</li>
+            <li>No incluyen el efecto del tiempo.</li>
+          </ul></div>
+                <p>Los diagramas de equilibrio de fases son herramientas esenciales para comprender y predecir el comportamiento de los materiales metálicos frente a cambios de temperatura y composición. Su correcta interpretación permite tomar decisiones informadas en el diseño de tratamientos térmicos y en el control de la microestructura.</p>
+          <p>En la siguiente lección se estudiarán las transformaciones microestructurales que ocurren como resultado de los tratamientos térmicos y su influencia directa en las propiedades del material.</p>
+    
+       
+       
+      </DivCarousel>
+    )
   },
 ];
 
@@ -456,18 +533,17 @@ export default function App() {
         <div className="flex items-center gap-3">
           <Activity className="text-blue-600" size={28} />
           <div>
-            <h1 className="text-xl font-bold tracking-tight text-slate-800">MaterialPhase <span className="text-blue-600">Viz</span></h1>
-            <p className="text-xs text-slate-500 font-medium">Módulo Educativo Interactivo</p>
+            <h1 className="text-xl font-bold tracking-tight text-slate-800">Diagramas de equilibrio de fases</h1>
+            
           </div>
         </div>
         <div className="hidden md:block text-sm text-slate-400 font-mono">v1.0.4 • TypeScript • React</div>
       </header>
 
       {/* 2. TABS NAVIGATION (Grid Area 2) */}
-      <nav className="bg-white border-b border-slate-200 px-6">
-        <ul className="flex gap-6 overflow-x-auto no-scrollbar">
+      <nav className="bg-white border-b border-slate-200 px-6 grid grid-cols-5">
           {TABS.map((tab) => (
-            <li key={tab.id}>
+           
               <button
                 onClick={() => setActiveTabId(tab.id)}
                 className={`relative py-4 text-sm font-medium transition-colors whitespace-nowrap
@@ -479,23 +555,14 @@ export default function App() {
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 rounded-t-full" />
                 )}
               </button>
-            </li>
+           
           ))}
-        </ul>
       </nav>
 
       {/* 3. MAIN CONTENT (Grid Area 3) */}
       <main className="p-6 overflow-hidden max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-6">
         
-        {/* Columna Izquierda: Renderizado del Diagrama */}
-        <section className="flex flex-col h-full min-h-[400px]">
-          <Card className="flex-1 h-full shadow-md border-slate-200 bg-white relative">
-             <div className="absolute top-4 left-4 z-10 bg-white/80 backdrop-blur px-3 py-1 rounded-full border border-slate-200 text-xs font-semibold text-slate-600 shadow-sm pointer-events-none">
-               Vista: {activeTab.title}
-             </div>
-             {renderContent()}
-          </Card>
-        </section>
+     
 
         {/* Columna Derecha: Información y Contexto */}
         <aside className="flex flex-col gap-4">
@@ -505,59 +572,18 @@ export default function App() {
               {activeTab.details}
             </p>
             
-            <div className="mt-auto pt-4 border-t border-slate-100">
-              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Conceptos Clave</h3>
-              <div className="flex flex-wrap gap-2">
-                {activeTabId === 'static' && (
-                  <>
-                    <Badge>Regla de Fases</Badge>
-                    <Badge>Eutéctico</Badge>
-                    <Badge>Solubilidad</Badge>
-                  </>
-                )}
-                {activeTabId === 'points' && (
-                  <>
-                    <Badge>Coordenadas</Badge>
-                    <Badge>Isoterma</Badge>
-                    <Badge>Estado</Badge>
-                  </>
-                )}
-                {activeTabId === 'dynamic' && (
-                  <>
-                    <Badge>Solidificación</Badge>
-                    <Badge>Liquidus</Badge>
-                    <Badge>Solidus</Badge>
-                  </>
-                )}
-                {activeTabId === 'interactive' && (
-                  <>
-                    <Badge>Tratamiento Térmico</Badge>
-                    <Badge>Cinética</Badge>
-                    <Badge>Tiempo</Badge>
-                  </>
-                )}
-                {activeTabId === 'compare' && (
-                  <>
-                    <Badge>Metaestable</Badge>
-                    <Badge>Temple</Badge>
-                    <Badge>Difusión</Badge>
-                  </>
-                )}
-              </div>
-            </div>
+            
           </Card>
 
-          <Card className="p-4 bg-slate-50 border-slate-200 flex-1">
-             <div className="flex items-start gap-3">
-               <Info className="text-blue-500 mt-1 shrink-0" size={20} />
-               <div className="text-xs text-slate-600 space-y-2">
-                 <p><strong>Nota del Experto:</strong></p>
-                 <p>
-                   Este diagrama representa un sistema binario eutéctico ideal. En sistemas reales, las líneas de liquidus suelen ser curvas y la solubilidad sólida varía con la temperatura (líneas solvus), creando formas más complejas.
-                 </p>
-               </div>
+             {/* Columna Izquierda: Renderizado del Diagrama */}
+        <section className="flex flex-col h-full min-h-[400px]">
+          <Card className="flex-1 h-full shadow-md border-slate-200 bg-white relative">
+             <div className="absolute top-4 left-4 z-10 bg-white/80 backdrop-blur px-3 py-1 rounded-full border border-slate-200 text-xs font-semibold text-slate-600 shadow-sm pointer-events-none">
+               Vista: {activeTab.title}
              </div>
+             {renderContent()}
           </Card>
+        </section>
         </aside>
 
       </main>

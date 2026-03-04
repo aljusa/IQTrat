@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceArea, BarChart, Bar, Cell } from 'recharts';
+import React, { useState } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,  ResponsiveContainer, ReferenceArea, BarChart, Bar, Cell } from 'recharts';
 import { Activity, Thermometer, Microscope, Settings, Factory, Info } from 'lucide-react';
 import DivCarousel from '../assets/DivCarousel';
 
@@ -347,7 +347,7 @@ const LessonLayout: React.FC<{
                     : 'bg-white border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-50'
                 }`}
               >
-                {React.cloneElement(tab.icon as React.ReactElement, { size: 16 })}
+                {React.cloneElement(tab.icon as React.ReactElement, { })}
                 {tab.shortLabel}
               </button>
           ))}
