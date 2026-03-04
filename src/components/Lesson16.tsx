@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, 
-  BarChart, Bar, ComposedChart, Area, ReferenceLine, ScatterChart, Scatter, ZAxis
+  BarChart, Bar, ComposedChart, Area, ReferenceLine,   
 } from 'recharts';
 import { Thermometer, Activity, Settings, Maximize } from 'lucide-react';
 import DivCarousel from '../assets/DivCarousel';
@@ -404,10 +404,7 @@ const TemperatureTimeDiagram: React.FC = () => {
               {/* Línea crítica A1 */}
               <ReferenceLine y={727} stroke="#ef4444" strokeDasharray="5 5" label={{ position: 'top', value: 'Temperatura A1 (727°C)', fill: '#ef4444', fontSize: 12 }} />
               
-              <Tooltip 
-                formatter={(value: number) => [`${value}°C`, 'Temperatura']}
-                labelFormatter={(label) => `Hora ${label}`}
-              />
+
               
               {/* Línea Base (Gris clara) */}
               <Line type="monotone" dataKey="temp" stroke="#e2e8f0" strokeWidth={4} dot={false} isAnimationActive={false} />

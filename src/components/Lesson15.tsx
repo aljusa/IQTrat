@@ -264,8 +264,7 @@ const TTTDiagram: React.FC = () => {
     for (let temp = 800; temp >= 200; temp -= 20) {
       let start = null;
       let end = null;
-      let ms = null;
-      let mf = null;
+ 
 
       // Simulamos la forma de C
       if (temp <= 727 && temp >= 250) {
@@ -279,8 +278,7 @@ const TTTDiagram: React.FC = () => {
         end = Math.pow(10, baseLogTEnd);
       }
 
-      if (temp === 250) ms = temp; // Ms line
-      if (temp === 100) mf = temp; // Mf line
+
 
       data.push({ temp, start, end });
     }
@@ -325,7 +323,6 @@ const TTTDiagram: React.FC = () => {
                     domain={[0, 800]} 
                     label={{ value: 'Temperatura (°C)', angle: -90, position: 'insideLeft', offset: -10 }} 
                   />
-                  <Tooltip formatter={(value: number) => value.toFixed(1)} />
                   <Legend verticalAlign="top" />
                   
                   {/* Curvas TTT */}

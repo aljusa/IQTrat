@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Info, Play, RefreshCw,  Activity } from 'lucide-react';
+import {  Play, RefreshCw,  Activity } from 'lucide-react';
 import DivCarousel from '../assets/DivCarousel';
 
 // --- TIPOS Y INTERFACES ---
