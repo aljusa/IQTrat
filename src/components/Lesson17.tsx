@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
 } from 'recharts';
@@ -8,17 +8,17 @@ import DivCarousel from '../assets/DivCarousel';
 interface TabItem {
   id: string;
   title: string;
-  description: ReactNode;
-  component: ReactNode;
+  description: React.ReactNode;
+  component: React.ReactNode;
 }
 
 interface CardProps {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
 }
 
 interface LayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 interface HeaderProps {

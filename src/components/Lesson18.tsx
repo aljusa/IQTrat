@@ -167,7 +167,7 @@ const FeCDiagram: React.FC = () => {
                 label={{ value: "Temperatura (°C)", angle: -90, position: 'left' }} 
               />
               <Tooltip 
-                formatter={(value: number) => [`${value.toFixed(0)} °C`, 'Temp']}
+               
                 labelFormatter={(label) => `Carbono: ${label}%`}
               />
               <Legend verticalAlign="top" height={36}/>
