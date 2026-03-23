@@ -37,15 +37,15 @@ const LESSON_DATA: LessonSection[] = [
   {
     id: 'intro',
     tabTitle: 'Introducción',
-    diagramTitle: 'Distribución Industrial de la Normalización',
-    description: 'La normalización es un tratamiento térmico ampliamente utilizado en la industria metalúrgica debido a su capacidad para mejorar las propiedades del acero con un costo relativamente bajo. Su aplicación abarca múltiples sectores donde se requiere un equilibrio entre resistencia, uniformidad y confiabilidad.',
+    diagramTitle: 'Distribución Industrial de la normalizado',
+    description: 'La normalizado es un tratamiento térmico ampliamente utilizado en la industria metalúrgica debido a su capacidad para mejorar las propiedades del acero con un costo relativamente bajo. Su aplicación abarca múltiples sectores donde se requiere un equilibrio entre resistencia, uniformidad y confiabilidad.',
     icon: <Globe className="w-4 h-4" />
   },
   {
     id: 'estructurales',
     tabTitle: 'Estructurales',
     diagramTitle: 'Aplicación en Piezas Estructurales',
-    description: 'La normalización se emplea en la fabricación de componentes estructurales que requieren buena resistencia mecánica y uniformidad interna, como vigas, perfiles y soportes.',
+    description: 'La normalizado se emplea en la fabricación de componentes estructurales que requieren buena resistencia mecánica y uniformidad interna, como vigas, perfiles y soportes.',
     icon: <LayoutGrid className="w-4 h-4" />
   },
   {
@@ -59,35 +59,35 @@ const LESSON_DATA: LessonSection[] = [
     id: 'engranajes',
     tabTitle: 'Engranajes y Ejes',
     diagramTitle: 'Transmisión de Movimiento y Carga',
-    description: 'Los engranajes y ejes requieren una combinación de resistencia y tenacidad. La normalización permite obtener propiedades adecuadas para la transmisión de movimiento y carga sin comprometer la integridad del material.',
+    description: 'Los engranajes y ejes requieren una combinación de resistencia y tenacidad. La normalizado permite obtener propiedades adecuadas para la transmisión de movimiento y carga sin comprometer la integridad del material.',
     icon: <Settings className="w-4 h-4" />
   },
   {
     id: 'preparacion',
     tabTitle: 'Preparación',
     diagramTitle: 'Secuencia de Tratamientos Térmicos',
-    description: 'La normalización se utiliza frecuentemente como tratamiento previo al temple o al revenido. Al homogeneizar la estructura del acero, mejora la efectividad de los tratamientos posteriores.',
+    description: 'La normalizado se utiliza frecuentemente como tratamiento previo al temple o al revenido. Al homogeneizar la estructura del acero, mejora la efectividad de los tratamientos posteriores.',
     icon: <Layers className="w-4 h-4" />
   },
   {
     id: 'costo',
     tabTitle: 'Bajo Costo',
     diagramTitle: 'Comparativa de Costos Operativos',
-    description: 'Uno de los principales beneficios de la normalización es su bajo costo operativo, ya que no requiere equipos sofisticados ni medios especiales de enfriamiento.',
+    description: 'Uno de los principales beneficios de la normalizado es su bajo costo operativo, ya que no requiere equipos sofisticados ni medios especiales de enfriamiento.',
     icon: <TrendingUp className="w-4 h-4" />
   },
   {
     id: 'simplicidad',
     tabTitle: 'Simplicidad',
     diagramTitle: 'Ciclo Térmico Simplificado',
-    description: 'El proceso de normalización es relativamente sencillo de aplicar, lo que facilita su implementación en diversos entornos industriales sin necesidad de alta complejidad técnica.',
+    description: 'El proceso de normalizado es relativamente sencillo de aplicar, lo que facilita su implementación en diversos entornos industriales sin necesidad de alta complejidad técnica.',
     icon: <TrendingUp className="w-4 h-4" />
   },
   {
     id: 'mejora',
     tabTitle: 'Mejora Integral',
     diagramTitle: 'Optimización de Propiedades Mecánicas',
-    description: 'La normalización mejora de forma general la calidad del acero, optimizando su estructura interna y sus propiedades mecánicas sin generar fragilidad excesiva.',
+    description: 'La normalizado mejora de forma general la calidad del acero, optimizando su estructura interna y sus propiedades mecánicas sin generar fragilidad excesiva.',
     icon: <TrendingUp className="w-4 h-4" />
   },
   {
@@ -101,14 +101,14 @@ const LESSON_DATA: LessonSection[] = [
     id: 'material',
     tabTitle: 'Limitación: Material',
     diagramTitle: 'Aptitud según el Tipo de Acero',
-    description: 'No todos los aceros responden de la misma manera a la normalización. Algunos aceros especiales requieren tratamientos térmicos más específicos para alcanzar propiedades deseadas.',
+    description: 'No todos los aceros responden de la misma manera a la normalizado. Algunos aceros especiales requieren tratamientos térmicos más específicos para alcanzar propiedades deseadas.',
     icon: <ShieldAlert className="w-4 h-4" />
   },
   {
     id: 'global',
     tabTitle: 'Importancia Global',
-    diagramTitle: 'El Equilibrio de la Normalización',
-    description: 'La normalización es un proceso versátil que mejora significativamente la calidad del acero y facilita su uso en múltiples aplicaciones industriales. Su equilibrio entre eficiencia, costo y resultados la convierte en una herramienta clave en la ingeniería de materiales.',
+    diagramTitle: 'El Equilibrio de la normalizado',
+    description: 'La normalizado es un proceso versátil que mejora significativamente la calidad del acero y facilita su uso en múltiples aplicaciones industriales. Su equilibrio entre eficiencia, costo y resultados la convierte en una herramienta clave en la ingeniería de materiales.',
     icon: <Globe className="w-4 h-4" />
   }
 ];
@@ -127,7 +127,7 @@ const LessonLayout: React.FC<LayoutProps> = ({ children, activeSection, sections
       {/* HEADER WITH NAV - CSS GRID ONLY */}
       <header className="bg-slate-900 text-white grid grid-rows-[auto_auto] shadow-lg sticky top-0 z-10">
         <div className="p-5 grid gap-1 border-b border-slate-700">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Aplicaciones de la Normalización</h1>
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Aplicaciones de la normalizado</h1>
           <p className="text-slate-400 text-sm">Tratamientos Térmicos del Acero</p>
         </div>
         
@@ -374,7 +374,7 @@ const DiagramRender: React.FC<{ sectionId: SectionId }> = ({ sectionId }) => {
       return renderWrapper(
         <div className="grid place-items-center w-full h-full relative">
            <div className="w-32 h-32 bg-blue-600 text-white rounded-full grid place-items-center text-center font-bold z-10 shadow-lg p-4">
-             Normalización
+             normalizado
            </div>
            {/* Nodos Conectados simulados con CSS Grid absoluto */}
            <div className="absolute top-10 left-10 md:left-32 bg-white p-2 text-sm rounded shadow border border-slate-200 font-semibold text-slate-700">Eficiencia</div>

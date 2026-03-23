@@ -37,9 +37,9 @@ const lessonData: SectionData[] = [
     id: 'intro',
     tabTitle: 'Introducción',
     icon: Settings,
-    title: 'Introducción a los efectos de la normalización',
-    description: 'La normalización produce cambios significativos en la microestructura del acero, lo que impacta directamente en sus propiedades mecánicas. Estos efectos permiten mejorar el desempeño del material en aplicaciones industriales donde se requiere confiabilidad y uniformidad.',
-    diagramTitle: 'Esquema Causa-Efecto de la Normalización'
+    title: 'Introducción a los efectos de la normalizado',
+    description: 'La normalizado produce cambios significativos en la microestructura del acero, lo que impacta directamente en sus propiedades mecánicas. Estos efectos permiten mejorar el desempeño del material en aplicaciones industriales donde se requiere confiabilidad y uniformidad.',
+    diagramTitle: 'Esquema Causa-Efecto de la normalizado'
   },
   {
     id: 'grano',
@@ -54,7 +54,7 @@ const lessonData: SectionData[] = [
     tabTitle: 'Resistencia',
     icon: Activity,
     title: 'Aumento de la resistencia mecánica',
-    description: 'La normalización mejora la capacidad del acero para soportar cargas sin sufrir deformaciones permanentes. Esto se debe al refinamiento estructural y a la distribución uniforme de fases en el material.',
+    description: 'La normalizado mejora la capacidad del acero para soportar cargas sin sufrir deformaciones permanentes. Esto se debe al refinamiento estructural y a la distribución uniforme de fases en el material.',
     diagramTitle: 'Diagrama Esfuerzo-Deformación'
   },
   {
@@ -70,7 +70,7 @@ const lessonData: SectionData[] = [
     tabTitle: 'Uniformidad',
     icon: LayoutGrid,
     title: 'Incremento de la uniformidad estructural',
-    description: 'La normalización genera una estructura homogénea en toda la pieza, eliminando variaciones internas. Esto garantiza un comportamiento mecánico más predecible.',
+    description: 'La normalizado genera una estructura homogénea en toda la pieza, eliminando variaciones internas. Esto garantiza un comportamiento mecánico más predecible.',
     diagramTitle: 'Distribución Microestructural: Heterogénea vs Homogénea'
   },
   {
@@ -86,15 +86,15 @@ const lessonData: SectionData[] = [
     tabTitle: 'Vs Recocido',
     icon: GitCompare,
     title: 'Comparación con el recocido',
-    description: 'En comparación con el recocido, la normalización produce un material más duro y resistente, debido a su enfriamiento más rápido (al aire) y a la formación de una microestructura más fina.',
-    diagramTitle: 'Tabla Comparativa: Normalización vs Recocido'
+    description: 'En comparación con el recocido, la normalizado produce un material más duro y resistente, debido a su enfriamiento más rápido (al aire) y a la formación de una microestructura más fina.',
+    diagramTitle: 'Tabla Comparativa: normalizado vs Recocido'
   },
   {
     id: 'temple',
     tabTitle: 'Vs Temple',
     icon: ArrowRight,
     title: 'Comparación con el temple',
-    description: 'A diferencia del temple, la normalización no alcanza niveles extremos de dureza. Sin embargo, ofrece una mejor combinación entre resistencia y ductilidad, evitando fragilidad excesiva.',
+    description: 'A diferencia del temple, la normalizado no alcanza niveles extremos de dureza. Sin embargo, ofrece una mejor combinación entre resistencia y ductilidad, evitando fragilidad excesiva.',
     diagramTitle: 'Gráfico Comparativo: Dureza vs Ductilidad'
   },
   {
@@ -102,7 +102,7 @@ const lessonData: SectionData[] = [
     tabTitle: 'Equilibrio Final',
     icon: Target,
     title: 'Equilibrio de propiedades finales',
-    description: 'El resultado global de la normalización es un material con un balance adecuado entre resistencia, tenacidad y ductilidad. Esta combinación lo hace ideal para múltiples aplicaciones industriales y como etapa previa a otros tratamientos.',
+    description: 'El resultado global de la normalizado es un material con un balance adecuado entre resistencia, tenacidad y ductilidad. Esta combinación lo hace ideal para múltiples aplicaciones industriales y como etapa previa a otros tratamientos.',
     diagramTitle: 'Balance Multidimensional de Propiedades'
   }
 ];
@@ -125,7 +125,7 @@ const IntroDiagram = () => (
     <svg viewBox="0 0 600 300" className="w-full max-w-2xl h-auto drop-shadow-md">
       {/* Bloque Principal */}
       <rect x="200" y="20" width="200" height="60" rx="8" fill="#3b82f6" />
-      <text x="300" y="55" fill="white" fontSize="18" fontWeight="bold" textAnchor="middle">Proceso de Normalización</text>
+      <text x="300" y="55" fill="white" fontSize="18" fontWeight="bold" textAnchor="middle">Proceso de normalizado</text>
       
       {/* Flechas */}
       <path d="M 300 80 L 300 120" stroke="#64748b" strokeWidth="3" fill="none" markerEnd="url(#arrowhead)" />
@@ -284,7 +284,7 @@ const ComparisonTable = () => (
       <thead className="bg-slate-100 border-b border-slate-200">
         <tr>
           <th className="p-4 font-semibold text-slate-700">Característica</th>
-          <th className="p-4 font-semibold text-blue-700">Normalización</th>
+          <th className="p-4 font-semibold text-blue-700">normalizado</th>
           <th className="p-4 font-semibold text-slate-500">Recocido (Completo)</th>
         </tr>
       </thead>
@@ -317,7 +317,7 @@ const ComparisonTable = () => (
 const TempleComparisonChart = () => {
   const data = [
     { Tratamiento: 'Recocido', Ductilidad: 90, Dureza: 30, size: 400, fill: '#94a3b8' },
-    { Tratamiento: 'Normalización', Ductilidad: 65, Dureza: 60, size: 600, fill: '#3b82f6' },
+    { Tratamiento: 'normalizado', Ductilidad: 65, Dureza: 60, size: 600, fill: '#3b82f6' },
     { Tratamiento: 'Temple', Ductilidad: 15, Dureza: 95, size: 400, fill: '#ef4444' },
   ];
 
@@ -396,7 +396,7 @@ const LessonLayout: React.FC = () => {
       <header className="grid grid-rows-[auto_auto] bg-white border-b border-slate-200 shadow-sm sticky top-0 z-10">
         <div className="grid p-6 pb-4">
           <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
-            Efectos de la Normalización del Acero
+            Efectos de la normalizado del Acero
           </h1>
         
         </div>

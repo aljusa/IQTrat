@@ -31,7 +31,7 @@ const lessonContent: LessonData[] = [
   {
     id: 0,
     title: "Introducción a las consideraciones prácticas",
-    description: "La aplicación efectiva de la normalización requiere el control preciso de diversas variables del proceso. Estos factores determinan la calidad de la microestructura final y, por lo tanto, las propiedades mecánicas del acero.",
+    description: "La aplicación efectiva de la normalizado requiere el control preciso de diversas variables del proceso. Estos factores determinan la calidad de la microestructura final y, por lo tanto, las propiedades mecánicas del acero.",
     diagramType: "intro-flow"
   },
   {
@@ -79,7 +79,7 @@ const lessonContent: LessonData[] = [
   {
     id: 8,
     title: "Integración de las variables del proceso",
-    description: "El éxito de la normalización depende de la correcta combinación de temperatura, tiempo y condiciones de enfriamiento. Estas variables actúan de forma interdependiente para lograr una microestructura óptima.",
+    description: "El éxito de la normalizado depende de la correcta combinación de temperatura, tiempo y condiciones de enfriamiento. Estas variables actúan de forma interdependiente para lograr una microestructura óptima.",
     diagramType: "integration-triangle"
   },
   {
@@ -108,7 +108,7 @@ const LessonLayout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab
       <header className="grid grid-rows-[auto_auto] bg-slate-900 shadow-md">
         <div className="grid px-6 py-4 border-b border-slate-700">
           <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-            Consideraciones Prácticas de Normalización
+            Consideraciones Prácticas de normalizado
           </h1>
           <p className="text-slate-400 text-sm mt-1">Tratamientos Térmicos del Acero</p>
         </div>
@@ -188,7 +188,7 @@ const DiagramRenderer: React.FC<{ type: string }> = ({ type }) => {
               <YAxis label={{ value: 'Temperatura (°C)', angle: -90, position: 'insideLeft' }} />
               <Tooltip />
               <ReferenceArea y1={850} y2={950} fill="#10B981" fillOpacity={0.2} strokeOpacity={0} />
-              <text x="50%" y="15%" textAnchor="middle" fill="#047857" fontWeight="bold">Rango Óptimo de Normalización</text>
+              <text x="50%" y="15%" textAnchor="middle" fill="#047857" fontWeight="bold">Rango Óptimo de normalizado</text>
               <Line type="monotone" dataKey="temp" stroke="#2563EB" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 8 }} />
             </LineChart>
           </ResponsiveContainer>
@@ -435,7 +435,7 @@ export default function App() {
         <div className="grid grid-cols-[auto_1fr] gap-3 items-center mt-4 bg-blue-50 p-4 rounded-lg border border-blue-100">
           <div className="grid place-items-center w-8 h-8 bg-blue-200 text-blue-700 font-bold rounded-full">!</div>
           <p className="text-sm text-blue-900">
-            Navegue por las pestañas superiores para explorar los diferentes aspectos y consideraciones del proceso de normalización.
+            Navegue por las pestañas superiores para explorar los diferentes aspectos y consideraciones del proceso de normalizado.
           </p>
         </div>
 

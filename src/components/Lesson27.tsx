@@ -47,8 +47,8 @@ const LESSON_DATA: LessonSection[] = [
     id: 'intro',
     tabLabel: 'Introducción',
     icon: Activity,
-    title: 'Introducción a las etapas de la normalización',
-    description: 'El proceso de normalización se lleva a cabo mediante una secuencia de etapas térmicas claramente definidas. Cada una cumple una función específica en la transformación de la microestructura del acero, permitiendo obtener resultados consistentes y reproducibles.',
+    title: 'Introducción a las etapas de la normalizado',
+    description: 'El proceso de normalizado se lleva a cabo mediante una secuencia de etapas térmicas claramente definidas. Cada una cumple una función específica en la transformación de la microestructura del acero, permitiendo obtener resultados consistentes y reproducibles.',
     diagramType: 'flowchart'
   },
   {
@@ -112,7 +112,7 @@ const LESSON_DATA: LessonSection[] = [
     tabLabel: 'Visión Integral',
     icon: Target,
     title: 'Importancia integral del proceso',
-    description: 'Cada etapa de la normalización es esencial y está interrelacionada. El éxito del tratamiento depende del control adecuado de temperatura, tiempo y enfriamiento, lo que permite obtener un material confiable y con propiedades optimizadas.',
+    description: 'Cada etapa de la normalizado es esencial y está interrelacionada. El éxito del tratamiento depende del control adecuado de temperatura, tiempo y enfriamiento, lo que permite obtener un material confiable y con propiedades optimizadas.',
     diagramType: 'full-process-graph'
   }
 ];
@@ -471,7 +471,7 @@ export default function App() {
 
   return (
     <LessonLayout 
-      title="Proceso de Normalización del Acero"
+      title="Proceso de normalizado del Acero"
       sections={LESSON_DATA}
       activeSectionId={activeTab}
       onTabChange={setActiveTab}
