@@ -32,25 +32,25 @@ const lessonSections: SectionData[] = [
     id: 'intro',
     tabTitle: 'Introducción',
     diagramTitle: 'Esquema General del Tratamiento Térmico',
-    description: 'La normalización es un tratamiento térmico aplicado principalmente a aceros con el fin de mejorar su estructura interna. Este proceso es fundamental en la metalurgia porque permite obtener materiales con propiedades mecánicas más consistentes y confiables. Su alcance se centra en modificar la microestructura del acero mediante control térmico.'
+    description: 'La normalizado es un tratamiento térmico aplicado principalmente a aceros con el fin de mejorar su estructura interna. Este proceso es fundamental en la metalurgia porque permite obtener materiales con propiedades mecánicas más consistentes y confiables. Su alcance se centra en modificar la microestructura del acero mediante control térmico.'
   },
   {
     id: 'definicion',
     tabTitle: 'Definición',
-    diagramTitle: 'Curva Temperatura-Tiempo de Normalización',
-    description: 'La normalización consiste en calentar el acero a una temperatura superior a su punto crítico y posteriormente dejarlo enfriar al aire. Este enfriamiento no es forzado, lo que permite una transformación estructural más uniforme que en otros tratamientos térmicos.'
+    diagramTitle: 'Curva Temperatura-Tiempo de normalizado',
+    description: 'La normalizado consiste en calentar el acero a una temperatura superior a su punto crítico y posteriormente dejarlo enfriar al aire. Este enfriamiento no es forzado, lo que permite una transformación estructural más uniforme que en otros tratamientos térmicos.'
   },
   {
     id: 'objetivo',
     tabTitle: 'Objetivo',
     diagramTitle: 'Refinamiento del Grano Estructural',
-    description: 'El propósito principal de la normalización es homogeneizar la estructura interna del acero y refinar el tamaño de grano. Esto se traduce en mejores propiedades mecánicas, como mayor resistencia y tenacidad, además de una mayor uniformidad en el comportamiento del material.'
+    description: 'El propósito principal de la normalizado es homogeneizar la estructura interna del acero y refinar el tamaño de grano. Esto se traduce en mejores propiedades mecánicas, como mayor resistencia y tenacidad, además de una mayor uniformidad en el comportamiento del material.'
   },
   {
     id: 'calentamiento',
     tabTitle: 'Calentamiento',
     diagramTitle: 'Distribución Uniforme de Calor en Horno',
-    description: 'Durante la normalización, el acero se calienta de manera uniforme para evitar la generación de tensiones internas o deformaciones. Este control es esencial para asegurar que toda la pieza responda de forma homogénea al tratamiento.'
+    description: 'Durante la normalizado, el acero se calienta de manera uniforme para evitar la generación de tensiones internas o deformaciones. Este control es esencial para asegurar que toda la pieza responda de forma homogénea al tratamiento.'
   },
   {
     id: 'mantenimiento',
@@ -68,19 +68,19 @@ const lessonSections: SectionData[] = [
     id: 'acero-carbono',
     tabTitle: 'Aceros al Carbono',
     diagramTitle: 'Aplicaciones Industriales Comunes',
-    description: 'Los aceros al carbono son los materiales más comúnmente sometidos a normalización debido a su uso extendido en la industria. Este tratamiento mejora su resistencia mecánica y su uniformidad estructural.'
+    description: 'Los aceros al carbono son los materiales más comúnmente sometidos a normalizado debido a su uso extendido en la industria. Este tratamiento mejora su resistencia mecánica y su uniformidad estructural.'
   },
   {
     id: 'baja-aleacion',
     tabTitle: 'Baja Aleación',
     diagramTitle: 'Mejora en Uniformidad Estructural',
-    description: 'Los aceros de baja aleación también se benefician de la normalización, ya que este proceso mejora su resistencia y reduce irregularidades estructurales, haciéndolos más adecuados para aplicaciones exigentes.'
+    description: 'Los aceros de baja aleación también se benefician de la normalizado, ya que este proceso mejora su resistencia y reduce irregularidades estructurales, haciéndolos más adecuados para aplicaciones exigentes.'
   },
   {
     id: 'importancia',
     tabTitle: 'Importancia',
     diagramTitle: 'Flujo de Procesamiento Industrial',
-    description: 'La normalización permite obtener un acero con estructura uniforme y propiedades mejoradas, lo que lo hace apto para aplicaciones exigentes o como etapa previa a otros tratamientos térmicos. Es un proceso clave para garantizar calidad y desempeño en componentes metálicos.'
+    description: 'La normalizado permite obtener un acero con estructura uniforme y propiedades mejoradas, lo que lo hace apto para aplicaciones exigentes o como etapa previa a otros tratamientos térmicos. Es un proceso clave para garantizar calidad y desempeño en componentes metálicos.'
   }
 ];
 
@@ -275,7 +275,7 @@ const DiagramRender: React.FC<DiagramRenderProps> = ({ activeIndex }) => {
               <text x="125" y="120" textAnchor="middle" fill="#334155" fontSize="12">Tensiones Residuales</text>
               
               <path d="M 220 100 L 280 100" stroke="#10b981" strokeWidth="4" markerEnd="url(#arrow)" />
-              <text x="250" y="90" textAnchor="middle" fill="#059669" fontSize="12" fontWeight="bold">Normalización</text>
+              <text x="250" y="90" textAnchor="middle" fill="#059669" fontSize="12" fontWeight="bold">normalizado</text>
               
               <rect x="300" y="40" width="150" height="120" fill="#e2e8f0" stroke="#0f172a" strokeWidth="3" />
               <circle cx="375" cy="100" r="30" fill="none" stroke="#334155" strokeWidth="2" />
@@ -294,7 +294,7 @@ const DiagramRender: React.FC<DiagramRenderProps> = ({ activeIndex }) => {
             <line x1="140" y1="100" x2="190" y2="100" stroke="#334155" strokeWidth="2" markerEnd="url(#arrow)" />
             
             <rect x="200" y="70" width="160" height="60" rx="4" fill="#10b981" stroke="#047857" strokeWidth="2" />
-            <text x="280" y="105" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="14">NORMALIZACIÓN</text>
+            <text x="280" y="105" textAnchor="middle" fill="#ffffff" fontWeight="bold" fontSize="14">normalizado</text>
 
             <line x1="360" y1="100" x2="410" y2="100" stroke="#334155" strokeWidth="2" markerEnd="url(#arrow)" />
             
@@ -330,7 +330,7 @@ export default function App() {
       {/* HEADER: Título y Navegación */}
       <header className="grid grid-rows-[auto_auto] gap-4 bg-slate-900 text-white p-6 shadow-md">
         <div className="grid place-items-center">
-          <h1 className="text-3xl font-extrabold tracking-tight">Normalización de Aceros</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight">normalizado de Aceros</h1>
           <p className="text-slate-400 mt-2 text-sm">Tratamiento Térmico y Modificación Estructural</p>
         </div>
         
