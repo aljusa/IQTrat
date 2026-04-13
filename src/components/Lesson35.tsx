@@ -1,5 +1,3 @@
-import React from 'react';
-
 // --- COMPONENTES VISUALES (Diagramas SVG) ---
 
 const GeneralScheme = () => (
@@ -345,7 +343,7 @@ const courseData = [
   },
   {
     id: "cierre",
-    title: "Cierre: Diversidad tecnológica",
+    title: "Diversidad tecnológica",
     explanation: "Las tecnologías de nitruración reflejan la evolución de la ingeniería de superficies hacia procesos más precisos y especializados. Desde métodos convencionales hasta técnicas de alta tecnología, cada opción ofrece ventajas específicas que permiten adaptarse a diferentes contextos industriales.",
     VisualComponent: TechMapDiagram,
     bgColor: "bg-slate-800",
@@ -363,9 +361,7 @@ export default function App() {
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
           Ingeniería de Superficies
         </h1>
-        <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-          Guía interactiva sobre las tecnologías de nitruración y su evolución en la industria.
-        </p>
+      
       </header>
 
       {/* Main Content */}
@@ -381,9 +377,7 @@ export default function App() {
             >
               {/* Text Area */}
               <div className={`p-8 md:p-12 flex flex-col justify-center w-full md:w-1/2 ${isEven ? 'md:order-1' : 'md:order-2'}`}>
-                <div className="uppercase tracking-wider text-sm font-semibold opacity-70 mb-2">
-                  Sección 0{index + 1}
-                </div>
+               
                 <h2 className="text-3xl font-bold mb-6 leading-tight">
                   {section.title}
                 </h2>
@@ -402,11 +396,6 @@ export default function App() {
           );
         })}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center mt-12">
-        <p>© 2026 Ideastoweb - Entorno Educativo Interactivo.</p>
-      </footer>
     </div>
   );
 }
