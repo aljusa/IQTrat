@@ -166,8 +166,12 @@ const ConceptMap = () => (
 
 
 // --- Layout Components ---
-
-const Section = ({ title, children, isReverse }) => (
+type SectionProps = {
+  title?: any; // 👈 opcional
+  children: React.ReactNode;
+  isReverse: boolean;
+};
+const Section = ({ title, children, isReverse }: SectionProps) => (
   <section className="py-12 border-b border-slate-100 last:border-0">
     <div className={`flex flex-col gap-8 items-center ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
       {children}

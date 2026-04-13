@@ -230,6 +230,7 @@ const ApplicationsCollage = () => (
 );
 
 // --- COMPONENTE DE SECCIÓN ---
+
 const Section = ({ number, title, explanation, visualSuggestionText, DiagramComponent }) => (
   <section className="mb-16 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
     <div className="p-6 md:p-8">
@@ -243,24 +244,14 @@ const Section = ({ number, title, explanation, visualSuggestionText, DiagramComp
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
         <div className="space-y-4">
           <div className="prose prose-slate prose-p:leading-relaxed">
-            <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-2">Explicación</h3>
             {explanation.split('\n\n').map((paragraph, idx) => (
               <p key={idx} className="text-slate-600">{paragraph}</p>
             ))}
           </div>
-          
-          <div className="bg-amber-50 rounded-lg p-4 border border-amber-100 mt-6">
-            <h3 className="text-xs font-bold text-amber-800 uppercase tracking-wider mb-1 flex items-center gap-1">
-              Sugerencia Visual Extraída
-            </h3>
-            <p className="text-sm text-amber-900 italic">"{visualSuggestionText}"</p>
-          </div>
         </div>
 
         <div className="flex flex-col justify-center">
-          <h3 className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-4 text-center lg:text-left">
-            Representación Visual Generada
-          </h3>
+        
           <DiagramComponent />
         </div>
       </div>
@@ -330,19 +321,13 @@ export default function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
             Ingeniería de Superficies
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Una guía interactiva sobre cómo la modificación de la capa externa de los materiales revoluciona la industria moderna.
-          </p>
+       
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-12 text-center max-w-3xl mx-auto">
-          <p className="text-slate-500">
-            Explora a continuación los conceptos fundamentales, los procesos termoquímicos involucrados y el impacto de estos tratamientos en la ingeniería actual. Cada sección incluye un diagrama explicativo basado en conceptos académicos.
-          </p>
-        </div>
+
 
         {content.map((section, index) => (
           <Section 

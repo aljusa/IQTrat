@@ -213,11 +213,7 @@ const ContentSection = ({ title, content, VisualComponent, index }) => {
         {/* Sugerencia Visual */}
         <div className={`w-full md:w-5/12 ${isEven ? 'md:order-2' : 'md:order-1'}`}>
           <div className="bg-white p-2 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-            <div className="mb-2 px-2 flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
-                Representación Visual
-              </span>
-            </div>
+       
             {VisualComponent && <VisualComponent />}
           </div>
         </div>
@@ -304,9 +300,7 @@ export default function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Nitruración: Tratamiento Termoquímico
           </h1>
-          <p className="text-lg text-slate-300 max-w-2xl">
-            Una guía educativa sobre la ingeniería de superficies, el comportamiento atómico del nitrógeno y su impacto crítico en la durabilidad de los materiales.
-          </p>
+        
           <div className="mt-10 animate-bounce text-indigo-400">
             <ChevronsDown size={28} />
           </div>
@@ -325,13 +319,6 @@ export default function App() {
           />
         ))}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 py-8 text-center border-t border-slate-800">
-        <p className="text-slate-400 text-sm">
-          Módulo educativo interactivo diseñado para la comprensión de tratamientos térmicos.
-        </p>
-      </footer>
     </div>
   );
 }

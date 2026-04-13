@@ -211,7 +211,7 @@ export default function App() {
       Visual: CollageVisual
     },
     {
-      title: "Cierre: De lo empírico a lo controlado",
+      title: "De lo empírico a lo controlado",
       text: "El desarrollo histórico refleja una transición desde métodos empíricos hacia procesos altamente controlados y científicos. Esta evolución ha permitido mejorar materiales tradicionales y adaptarse a las nuevas demandas tecnológicas de la ingeniería moderna.",
       Visual: BeforeAfterVisual
     }
@@ -233,13 +233,10 @@ export default function App() {
           </svg>
         </div>
         <div className="max-w-5xl mx-auto relative z-10 text-center">
-          <span className="uppercase tracking-widest text-blue-400 font-bold text-sm mb-4 block">Ingeniería de Materiales</span>
+         
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
             Tratamientos Termoquímicos
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto font-light">
-            Un viaje tecnológico desde la metalurgia empírica hasta la ingeniería de superficies de precisión.
-          </p>
         </div>
       </header>
 
@@ -276,13 +273,6 @@ export default function App() {
           );
         })}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-10 text-center border-t border-slate-800">
-        <p className="flex items-center justify-center gap-2">
-          Estructurado y diseñado con fines educativos <Cpu size={16} className="text-blue-500" />
-        </p>
-      </footer>
 
     </div>
   );

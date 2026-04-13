@@ -100,21 +100,42 @@ const MaterialDesignDiagram = () => {
             <span>Dureza Superficial</span>
             <span>{hardness}%</span>
           </div>
-          <input type="range" min="0" max="100" value={hardness} onChange={(e) => setHardness(e.target.value)} className="w-full accent-indigo-600" />
+      <input
+  type="range"
+  min="0"
+  max="100"
+  value={hardness}
+  onChange={(e) => setHardness(Number(e.target.value))}
+  className="w-full accent-indigo-600"
+/>
         </div>
         <div>
           <div className="flex justify-between text-sm font-medium text-slate-700 mb-1">
             <span>Conductividad</span>
             <span>{conductivity}%</span>
           </div>
-          <input type="range" min="0" max="100" value={conductivity} onChange={(e) => setConductivity(e.target.value)} className="w-full accent-blue-500" />
+<input
+  type="range"
+  min="0"
+  max="100"
+  value={hardness}
+  onChange={(e) => setHardness(Number(e.target.value))}
+  className="w-full accent-indigo-600"
+/>
         </div>
         <div>
           <div className="flex justify-between text-sm font-medium text-slate-700 mb-1">
             <span>Resistencia Química</span>
             <span>{resistance}%</span>
           </div>
-          <input type="range" min="0" max="100" value={resistance} onChange={(e) => setResistance(e.target.value)} className="w-full accent-emerald-500" />
+<input
+  type="range"
+  min="0"
+  max="100"
+  value={hardness}
+  onChange={(e) => setHardness(Number(e.target.value))}
+  className="w-full accent-indigo-600"
+/>
         </div>
       </div>
       <div className="flex-1 flex items-center justify-center">
@@ -262,15 +283,10 @@ export default function App() {
       {/* HEADER */}
       <header className="bg-gradient-to-r from-slate-900 to-indigo-900 text-white py-16 px-6 sm:px-12 lg:px-24 border-b-4 border-blue-500 shadow-md">
         <div className="max-w-5xl mx-auto">
-          <div className="inline-block px-3 py-1 bg-blue-500/20 text-blue-200 rounded-full text-sm font-semibold tracking-wide mb-4 border border-blue-400/30">
-            Ingeniería de Superficies
-          </div>
+
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
             Tratamientos Termoquímicos Modernos
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl leading-relaxed">
-            Una exploración visual interactiva sobre cómo la modificación de superficies está impulsando la tecnología, los materiales avanzados y la ingeniería contemporánea.
-          </p>
         </div>
       </header>
 
@@ -299,12 +315,6 @@ export default function App() {
                 
                 <div className="lg:col-span-7">
                   <div className="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
-                    <div className="bg-slate-50 rounded-t-xl px-4 py-2 border-b border-slate-200 flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                      <span className="text-xs text-slate-400 ml-2 font-mono">Representación Visual</span>
-                    </div>
                     <section.VisualComponent />
                   </div>
                 </div>
@@ -314,10 +324,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
-        <p>© 2026 Ideastoweb Educational Platforms. Diseñado para la síntesis de información compleja.</p>
-      </footer>
+  
     </div>
   );
 }
