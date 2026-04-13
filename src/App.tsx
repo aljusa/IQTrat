@@ -30,7 +30,24 @@ import Lesson27 from './components/Lesson27'
 import Lesson28 from './components/Lesson28'
 import Lesson29 from './components/Lesson29'
 import Lesson30 from './components/Lesson30'
-
+import Lesson31 from './components/Lesson31'
+import Lesson32 from './components/Lesson32'
+import Lesson33 from './components/Lesson33'
+import Lesson34 from './components/Lesson34'
+import Lesson35 from './components/Lesson35'
+import Lesson36 from './components/Lesson36'
+import Lesson37 from './components/Lesson37'
+import Lesson38 from './components/Lesson38'
+import Lesson39 from './components/Lesson39'
+import Lesson40 from './components/Lesson40'
+import Lesson41 from './components/Lesson41'
+import Lesson42 from './components/Lesson42'
+import Lesson43 from './components/Lesson43'
+import Lesson44 from './components/Lesson44'
+import Lesson45 from './components/Lesson45'
+import Lesson46 from './components/Lesson46'
+import Lesson47 from './components/Lesson47'
+import Lesson48 from './components/Lesson48'
 const lessons = {
   lesson1: Lesson1,
   lesson2: Lesson2,
@@ -62,6 +79,24 @@ const lessons = {
   lesson28: Lesson28,
   lesson29: Lesson29,
   lesson30: Lesson30,
+  lesson31: Lesson31,
+  lesson32: Lesson32,
+  lesson33: Lesson33,
+  lesson34: Lesson34,
+  lesson35: Lesson35,
+  lesson36: Lesson36,
+  lesson37: Lesson37,
+  lesson38: Lesson38,
+  lesson39: Lesson39,
+  lesson40: Lesson40,
+  lesson41: Lesson41,
+  lesson42: Lesson42,
+  lesson43: Lesson43,
+  lesson44: Lesson44,
+  lesson45: Lesson45,
+  lesson46: Lesson46,
+  lesson47: Lesson47,
+  lesson48: Lesson48,
 } as const
 
 type LessonKey = keyof typeof lessons
@@ -80,7 +115,7 @@ function App() {
         value={lesson}
         onChange={(e) => setLesson(e.target.value as LessonKey)}
       >
-        {Array.from({ length: 30 }, (_, i) => i + 1).map((n) => (
+        {Array.from({ length: 48 }, (_, i) => i + 1).map((n) => (
           <option key={n} value={`lesson${n}`}>
             Lección {n}
           </option>
