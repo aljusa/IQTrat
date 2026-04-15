@@ -236,7 +236,7 @@ const sectionsData = [
   },
   {
     id: 7,
-    title: "Cierre: balance entre beneficios y control",
+    title: "Balance entre beneficios y control",
     icon: <Scale className="text-gray-700 w-6 h-6" />,
     explanation: "El éxito del tratamiento radica en lograr un equilibrio preciso. Se deben maximizar las propiedades (dureza, desgaste, fatiga) minimizando al mismo tiempo los riesgos como fragilidad y desviaciones dimensionales.",
     VisualComponent: BalanceDiag
@@ -253,9 +253,7 @@ export default function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
             Efectos de la <span className="text-blue-600">Nitruración</span>
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Guía interactiva sobre los impactos mecánicos, estructurales y dimensionales del tratamiento termoquímico de nitruración en materiales metálicos.
-          </p>
+
         </header>
 
         {/* Content Grid */}
@@ -284,9 +282,7 @@ export default function App() {
 
                 {/* Visual Representation */}
                 <div className="md:w-1/2 bg-slate-50 p-6 flex items-center justify-center border-t md:border-t-0 md:border-l border-slate-100 relative min-h-[250px]">
-                  <div className="absolute top-4 right-4 text-xs font-semibold text-slate-400 uppercase tracking-widest">
-                    Esquema {index + 1}
-                  </div>
+               
                   <div className="w-full max-w-[300px] aspect-video">
                     <section.VisualComponent />
                   </div>
@@ -297,10 +293,7 @@ export default function App() {
           ))}
         </div>
         
-        {/* Footer */}
-        <footer className="mt-16 text-center text-slate-500 text-sm">
-          <p>Material educativo generado para facilitar el análisis de procesos de ingeniería de superficies.</p>
-        </footer>
+ 
 
       </div>
     </div>

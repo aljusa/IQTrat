@@ -239,9 +239,7 @@ export default function App() {
       <header className="bg-blue-900 text-white py-16 px-6 text-center shadow-lg">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Materiales para Nitruración</h1>
-          <p className="text-lg md:text-xl text-blue-200 font-light max-w-2xl mx-auto">
-            Comprende la interacción entre la composición química y la efectividad del tratamiento térmico.
-          </p>
+      
         </div>
       </header>
 
@@ -254,12 +252,7 @@ export default function App() {
               
               {/* Text Area */}
               <div className="w-full lg:w-1/2 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-bold tracking-wide">
-                  <span className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">
-                    {section.id}
-                  </span>
-                  Concepto Clave
-                </div>
+              
                 <h2 className="text-3xl font-bold text-slate-900 leading-tight">
                   {section.title}
                 </h2>
@@ -298,10 +291,6 @@ export default function App() {
         })}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800 mt-12">
-        <p>© {new Date().getFullYear()} Creado por Ideastoweb. Módulo Educativo de Ciencia de Materiales.</p>
-      </footer>
     </div>
   );
 }

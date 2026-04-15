@@ -236,13 +236,9 @@ export default function App() {
       {/* HEADER */}
       <header className="bg-indigo-900 text-white py-16 px-6 md:px-12 lg:px-24 mb-12 shadow-lg bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-700 via-indigo-900 to-slate-900">
         <div className="max-w-6xl mx-auto">
-          <div className="inline-block px-3 py-1 bg-indigo-800/50 rounded-full text-indigo-200 text-sm font-semibold mb-4 border border-indigo-500/30">
-            Módulo Educativo Interactivo
-          </div>
+         
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Fundamentos de la Nitruración</h1>
-          <p className="text-xl md:text-2xl text-indigo-200 max-w-3xl font-light">
-            Descubre los principios termodinámicos, cinéticos y microestructurales que permiten endurecer y proteger el acero a nivel superficial.
-          </p>
+         
         </div>
       </header>
 
@@ -373,9 +369,7 @@ export default function App() {
 
       </main>
       
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm">
-        <p>Documento Educativo Interactivo generado por Ideastoweb.</p>
-      </footer>
+      
     </div>
   );
 }

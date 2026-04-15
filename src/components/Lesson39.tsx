@@ -14,7 +14,7 @@ import {
 // --- Visual Components ---
 
 const IntroDiagram = () => (
-  <div className="flex flex-col sm:flex-row gap-4 w-full h-full justify-center items-end bg-slate-50 p-6 rounded-xl border border-slate-200">
+  <div className="flex flex-row gap-4 w-full h-full justify-center items-end bg-slate-50 p-6 rounded-xl border border-slate-200">
     {[
       { name: 'Acero', color: 'bg-slate-700', layer: 'bg-slate-400', height: 'h-32' },
       { name: 'Titanio', color: 'bg-slate-300', layer: 'bg-yellow-500', height: 'h-40' },
@@ -192,7 +192,7 @@ const TextContent = ({ title, children }) => (
 );
 
 const VisualContent = ({ children }) => (
-  <div className="w-full md:w-1/2 h-64 md:h-80">
+  <div className="w-full md:w-1/2">
     {children}
   </div>
 );
@@ -210,16 +210,11 @@ export default function App() {
            <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
         </div>
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-6">
-          <div className="inline-flex items-center justify-center p-3 bg-indigo-500/20 text-indigo-300 rounded-full mb-4">
-            <Layers className="w-6 h-6 mr-2" />
-            <span className="font-semibold uppercase tracking-wider text-sm">Ingeniería de Superficies</span>
-          </div>
+      
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
             Nitruración en <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Materiales Avanzados</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-            Explora cómo la modificación superficial transforma las propiedades de materiales más allá de los aceros tradicionales.
-          </p>
+      
         </div>
       </header>
 
@@ -326,9 +321,6 @@ export default function App() {
 
       </main>
 
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm">
-        <p>Generado como recurso educativo interactivo basado en textos académicos de ciencia de materiales.</p>
-      </footer>
     </div>
   );
 }

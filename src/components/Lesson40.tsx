@@ -35,9 +35,6 @@ export default function App() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Fundamentos de la <span className="text-blue-400">Nitrocarburización</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-            Una guía interactiva sobre la modificación superficial de aceros para aplicaciones de alto rendimiento.
-          </p>
         </div>
       </header>
 
@@ -266,12 +263,6 @@ export default function App() {
         </section>
 
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 py-8 text-center text-slate-500 text-sm mt-12 border-t border-slate-200">
-        <p>Página educativa generada para ilustrar los fundamentos de la nitrocarburización.</p>
-        <p className="mt-1">© {new Date().getFullYear()} - Ingeniería de Superficies</p>
-      </footer>
     </div>
   );
 }

@@ -115,7 +115,7 @@ function App() {
         value={lesson}
         onChange={(e) => setLesson(e.target.value as LessonKey)}
       >
-        {Array.from({ length: 35 }, (_, i) => i + 1).map((n) => (
+        {Array.from({ length: 40 }, (_, i) => i + 1).map((n) => (
           <option key={n} value={`lesson${n}`}>
             Lección {n}
           </option>
