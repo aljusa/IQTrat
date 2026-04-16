@@ -329,12 +329,8 @@ export default function App() {
           <svg width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
         <div className="max-w-5xl mx-auto relative z-10 text-center">
-          <span className="text-indigo-300 font-bold tracking-widest text-sm uppercase mb-2 block">Guía Académica Visual</span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Fundamentos de la Carbonitruración</h1>
-          <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto font-light">
-            Explora de manera interactiva el proceso termoquímico que transforma las propiedades del acero, 
-            combinando carbono y nitrógeno.
-          </p>
+      
         </div>
       </header>
 
