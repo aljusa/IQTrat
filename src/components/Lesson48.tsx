@@ -363,46 +363,21 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-100 font-sans text-slate-800 flex flex-col">
       {/* Header */}
-      <header className="bg-indigo-700 text-white p-6 shadow-md z-10 sticky top-0">
+      <header className="bg-indigo-700 text-white p-6 shadow-md z-10 top-0">
         <div className="max-w-6xl mx-auto flex items-center gap-4">
           <div className="p-3 bg-white bg-opacity-20 rounded-lg">
             <BookOpen size={28} className="text-indigo-100" />
           </div>
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Avances en Carburización de Materiales Modernos</h1>
-            <p className="text-indigo-200 text-sm mt-1">Módulo Interactivo Educativo</p>
+     
           </div>
         </div>
       </header>
 
       <div className="flex-1 max-w-6xl mx-auto w-full flex flex-col md:flex-row p-4 gap-6 relative">
         
-        {/* Sidebar Navigation */}
-        <aside className="w-full md:w-1/3 lg:w-1/4 bg-white rounded-xl shadow-sm border border-slate-200 p-4 h-fit sticky top-28 overflow-y-auto max-h-[80vh]">
-          <h2 className="text-xs font-bold uppercase text-slate-400 mb-4 tracking-wider">Índice de Contenidos</h2>
-          <nav className="flex flex-col gap-2">
-            {lessonContent.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  setActiveSection(item.id);
-                  document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }}
-                className={`text-left p-3 rounded-lg text-sm transition-all flex items-start gap-3 ${
-                  activeSection === item.id 
-                  ? 'bg-indigo-50 border-l-4 border-indigo-600 text-indigo-800 font-semibold' 
-                  : 'hover:bg-slate-50 text-slate-600 border-l-4 border-transparent'
-                }`}
-              >
-                <span className="bg-slate-200 text-slate-500 rounded-full w-5 h-5 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
-                  {index + 1}
-                </span>
-                {item.title}
-              </button>
-            ))}
-          </nav>
-        </aside>
-
+      
         {/* Main Content Area */}
         <main className="flex-1 flex flex-col gap-8 pb-20">
           {lessonContent.map((section, index) => (
@@ -423,7 +398,6 @@ export default function App() {
               <div className="p-6 md:p-8 flex flex-col lg:flex-row gap-8 items-start">
                 {/* Explanation Context */}
                 <div className="flex-1">
-                  <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Explicación</h3>
                   <p className="text-slate-600 leading-relaxed text-base">
                     {section.explanation}
                   </p>
@@ -434,10 +408,7 @@ export default function App() {
                   <div className="bg-slate-100 p-1 rounded-xl">
                     <section.VisualComponent />
                   </div>
-                  <div className="flex items-start gap-2 text-slate-500 bg-slate-50 p-3 rounded-lg text-xs italic">
-                    <Maximize size={16} className="text-indigo-400 flex-shrink-0 mt-0.5"/>
-                    <p><strong>Sugerencia Visual Integrada:</strong> {section.visualText}</p>
-                  </div>
+             
                 </div>
               </div>
             </article>

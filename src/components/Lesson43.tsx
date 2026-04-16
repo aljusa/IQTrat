@@ -279,9 +279,6 @@ export default function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
             Aplicaciones en Aceros y Aceros Inoxidables
           </h1>
-          <p className="text-xl text-slate-300 font-light max-w-2xl mx-auto">
-            El impacto de la nitrocarburización en la industria moderna: mejorando la durabilidad, resistencia y sostenibilidad de los materiales.
-          </p>
         </div>
       </header>
 
@@ -297,9 +294,6 @@ export default function App() {
               >
                 {/* Texto y Explicación */}
                 <div className="flex-1 space-y-4">
-                  <div className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-2">
-                    Sección {index + 1}
-                  </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-800 border-b-2 border-blue-100 pb-2">
                     {section.title}
                   </h2>
@@ -321,12 +315,6 @@ export default function App() {
           })}
         </div>
       </main>
-
-      {/* Pie de página */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm">
-        <p>Documento interactivo generado para estudio e investigación técnica en ciencia de materiales.</p>
-        <p className="mt-2">© {new Date().getFullYear()} Ideastoweb - Entorno de Aprendizaje</p>
-      </footer>
     </div>
   );
 }

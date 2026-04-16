@@ -372,9 +372,7 @@ export default function App() {
           <h1 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
             Fundamentos del Cromizado
           </h1>
-          <p className="text-lg md:text-xl text-blue-100 max-w-2xl font-light">
-            Módulo educativo interactivo sobre tratamientos termoquímicos de superficie. Explora los principios, etapas y efectos de la difusión de cromo en metales.
-          </p>
+     
         </div>
       </header>
 
@@ -396,9 +394,7 @@ export default function App() {
               {/* Contenido Textual Inferior */}
               <div className="p-6 flex flex-col grow">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full">
-                    Módulo {section.id}
-                  </span>
+                 
                   <h2 className="text-xl font-bold text-slate-800 leading-tight">
                     {section.title}
                   </h2>
@@ -411,11 +407,6 @@ export default function App() {
           ))}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-6 text-center text-sm">
-        <p>Generado por Ideastoweb | Transformación de Texto Académico a Web Educativa</p>
-      </footer>
     </div>
   );
 }

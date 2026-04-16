@@ -360,10 +360,7 @@ export default function App() {
                 <p className="text-slate-600 leading-relaxed mb-6 text-lg">
                   {section.explanation}
                 </p>
-                <div className="bg-slate-50 p-4 rounded-lg border-l-4 border-indigo-400">
-                  <p className="text-xs text-indigo-600 font-bold uppercase tracking-wider mb-1">Concepto Visual Requerido</p>
-                  <p className="text-sm text-slate-500 italic">"{section.visualSuggestion}"</p>
-                </div>
+            
               </div>
               
               {/* Sección Visual */}
@@ -377,11 +374,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
-        <p>© {new Date().getFullYear()} - Documento Interactivo Generado para Fines Educativos.</p>
-        <p className="mt-2 text-slate-500">Optimizado para el aprendizaje sobre ingeniería de superficies.</p>
-      </footer>
+    
     </div>
   );
 }

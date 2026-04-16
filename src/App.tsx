@@ -48,6 +48,9 @@ import Lesson45 from './components/Lesson45'
 import Lesson46 from './components/Lesson46'
 import Lesson47 from './components/Lesson47'
 import Lesson48 from './components/Lesson48'
+import Lesson49 from './components/Lesson49'
+import Lesson50 from './components/Lesson50'
+import Lesson51 from './components/Lesson51'
 const lessons = {
   lesson1: Lesson1,
   lesson2: Lesson2,
@@ -97,6 +100,9 @@ const lessons = {
   lesson46: Lesson46,
   lesson47: Lesson47,
   lesson48: Lesson48,
+  lesson49: Lesson49,
+  lesson50: Lesson50,
+  lesson51: Lesson51,
 } as const
 
 type LessonKey = keyof typeof lessons

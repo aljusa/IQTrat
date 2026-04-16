@@ -341,7 +341,6 @@ export default function App() {
           <Beaker size={48} className="text-indigo-300" />
           <div>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Lección: Fundamentos de la Carburización</h1>
-            <p className="text-indigo-200 mt-2 text-lg">Módulo de Tratamientos Termoquímicos y Ciencia de Materiales</p>
           </div>
         </div>
       </header>
@@ -352,11 +351,6 @@ export default function App() {
           <SectionCard key={section.id} section={section} index={index + 1} />
         ))}
       </main>
-
-      {/* Footer */}
-      <footer className="max-w-5xl mx-auto px-6 mt-16 text-center text-slate-500 text-sm">
-        <p>Material educativo interactivo generado para el estudio de tratamientos térmicos.</p>
-      </footer>
     </div>
   );
 }
@@ -381,30 +375,11 @@ const SectionCard = ({ section, index }) => {
         <div className="prose prose-slate prose-sm text-slate-600 mb-6 whitespace-pre-line">
           {explanation}
         </div>
-
-        {/* Expandable Visual Suggestion Original Text */}
-        <div className="mt-auto">
-          <button 
-            onClick={() => setShowSuggestion(!showSuggestion)}
-            className="flex items-center justify-between w-full text-left text-xs font-semibold text-slate-500 bg-slate-50 p-2 rounded hover:bg-slate-100 transition-colors"
-          >
-            <span>Ver sugerencia visual original</span>
-            {showSuggestion ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-          </button>
-          {showSuggestion && (
-            <div className="text-xs text-slate-600 bg-slate-50 p-3 mt-1 rounded border border-slate-100 italic">
-              "{visualSuggestionText}"
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Visual Area */}
       <div className="p-6 md:w-1/2 flex flex-col items-center justify-center bg-slate-50/50">
         <div className="w-full relative">
-          <div className="absolute -top-3 left-0 bg-indigo-600 text-white text-[10px] uppercase font-bold px-2 py-1 rounded shadow-sm z-10">
-            Representación Visual
-          </div>
           <VisualComponent />
         </div>
       </div>

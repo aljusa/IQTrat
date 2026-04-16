@@ -329,9 +329,7 @@ export default function App() {
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
               Aplicaciones Industriales de la <span className="text-orange-400">Carburización</span>
             </h1>
-            <p className="text-slate-300 max-w-2xl text-lg leading-relaxed">
-              Descubre cómo el tratamiento térmico superficial transforma el rendimiento de piezas mecánicas críticas en múltiples sectores industriales, garantizando núcleos tenaces y superficies resistentes al desgaste.
-            </p>
+         
           </div>
         </div>
       </header>
@@ -360,12 +358,6 @@ export default function App() {
                   {lesson.explanation}
                 </p>
 
-                <div className="mt-auto bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg">
-                  <p className="text-sm text-blue-800 font-medium flex items-start gap-2">
-                    <TrendingUp size={16} className="mt-0.5 shrink-0" />
-                    <span><strong>Sugerencia Visual Aplicada:</strong> {lesson.visualIdea}</span>
-                  </p>
-                </div>
               </div>
 
               {/* Diagrama Visual (Mitad Derecha) */}
@@ -377,12 +369,6 @@ export default function App() {
 
         </div>
       </main>
-
-      {/* FOOTER */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
-        <p>© 2026 Ideastoweb - Lección Educativa Interactiva.</p>
-        <p className="mt-2 text-xs">Generado a partir de textos académicos estructurales.</p>
-      </footer>
     </div>
   );
 }

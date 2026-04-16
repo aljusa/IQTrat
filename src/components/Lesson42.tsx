@@ -314,9 +314,7 @@ export default function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Microestructura en la Nitrocarburización
           </h1>
-          <p className="text-indigo-200 text-lg md:text-xl max-w-2xl font-light">
-            Análisis detallado de las transformaciones microestructurales, sus capas, fases y el impacto directo en las propiedades del acero.
-          </p>
+          
         </div>
       </header>
 
@@ -336,10 +334,7 @@ export default function App() {
         </div>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t border-slate-800 mt-12">
-        <p>Documento Educativo Interactivo Generado - Tratamientos Termoquímicos de Superficie.</p>
-      </footer>
+
     </div>
   );
 }

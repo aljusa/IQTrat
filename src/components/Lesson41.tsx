@@ -62,7 +62,7 @@ const SaltBathDiagram = () => (
 // 3. Horno Gaseoso
 const GasFurnaceDiagram = () => (
   <div className="flex flex-col items-center justify-center bg-slate-50 p-6 rounded-lg w-full h-full border border-slate-200">
-    <svg viewBox="0 0 200 150" className="w-full max-w-[250px] drop-shadow-md">
+    <svg viewBox="0 0 220 150" className="w-full max-w-[250px] drop-shadow-md">
       {/* Horno */}
       <rect x="20" y="20" width="160" height="110" rx="5" fill="#f1f5f9" stroke="#64748b" strokeWidth="3" />
       {/* Entrada de Gases */}
@@ -80,8 +80,8 @@ const GasFurnaceDiagram = () => (
       
       {/* Etiquetas */}
       <text x="5" y="35" fontSize="8" fill="#0284c7" fontWeight="bold">NH₃</text>
-      <text x="5" y="105" fontSize="8" fill="#ea580c" fontWeight="bold">CO / CO₂</text>
-      <text x="180" y="65" fontSize="8" fill="#64748b">Emisiones</text>
+      <text x="0" y="105" fontSize="8" fill="#ea580c" fontWeight="bold">CO / CO₂</text>
+      <text x="182" y="65" fontSize="8" fill="#64748b">Emisiones</text>
       
       {/* Puntos de difusión */}
       <circle cx="82" cy="60" r="1" fill="#0284c7" />
@@ -233,10 +233,6 @@ const ConceptSection = ({ title, text, VisualComponent, index }) => {
       <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} p-6 gap-8 items-center`}>
         {/* Explicación Académica */}
         <div className="flex-1 space-y-4">
-          <div className="flex items-center gap-2 text-blue-600 font-semibold mb-2">
-            <Info size={18} />
-            <h3>Explicación del Concepto</h3>
-          </div>
           {text.map((paragraph, i) => (
             <p key={i} className="text-slate-600 leading-relaxed text-justify">
               {paragraph}
@@ -247,7 +243,6 @@ const ConceptSection = ({ title, text, VisualComponent, index }) => {
         {/* Sugerencia Visual Renderizada */}
         <div className="flex-1 w-full flex flex-col items-center">
            <div className="w-full bg-slate-50 p-4 rounded-xl border border-dashed border-slate-300">
-             <h3 className="text-sm text-slate-500 font-semibold mb-4 text-center uppercase tracking-wider">Representación Visual</h3>
              <div className="flex justify-center w-full">
                {VisualComponent}
              </div>
@@ -322,16 +317,9 @@ export default function App() {
       {/* Header */}
       <header className="bg-blue-900 text-white py-16 px-6 text-center shadow-lg">
         <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-3 bg-blue-800/50 px-4 py-2 rounded-full text-blue-200 text-sm font-semibold mb-6">
-            <Leaf size={16} />
-            Módulo Educativo Interactivo
-          </div>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
             Tecnologías de Nitrocarburización y su Impacto Ambiental
           </h1>
-          <p className="text-xl text-blue-200 font-light max-w-2xl mx-auto">
-            Análisis comparativo de métodos industriales, desde el baño de sales hasta el plasma iónico, enfocado en sostenibilidad y eficiencia.
-          </p>
         </div>
       </header>
 
@@ -347,13 +335,6 @@ export default function App() {
           />
         ))}
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
-        <p className="text-sm">
-          Generado con enfoque educativo por <span className="text-blue-400 font-semibold">Ideastoweb</span>.
-        </p>
-      </footer>
     </div>
   );
 }

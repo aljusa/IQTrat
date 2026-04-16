@@ -225,18 +225,9 @@ export default function App() {
       {/* Header */}
       <header className="bg-slate-900 text-white py-12 px-6 shadow-lg border-b-4 border-blue-500">
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-center space-x-3 mb-4">
-            <span className="bg-blue-600 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">
-              Ciencia de Materiales
-            </span>
-            <span className="text-slate-400 text-sm">Lección Interactiva</span>
-          </div>
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
             Microestructura y propiedades <br className="hidden md:block"/> resultantes de la carburización
           </h1>
-          <p className="text-lg text-slate-300 max-w-2xl">
-            Explora cómo la ingeniería a nivel microscópico transforma metales blandos en componentes industriales de alto rendimiento.
-          </p>
         </div>
       </header>
 
@@ -271,11 +262,6 @@ export default function App() {
           ))}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm">
-        <p>Generado por Ideastoweb • Transformando texto académico en conocimiento interactivo.</p>
-      </footer>
     </div>
   );
 }

@@ -14,7 +14,7 @@ const App = () => {
           <rect x="10" y="10" width="180" height="80" fill="#e5e7eb" rx="8" />
           <rect x="10" y="10" width="180" height="80" fill="none" stroke="#ea580c" strokeWidth="12" rx="8" />
           <text x="100" y="55" textAnchor="middle" fill="#374151" fontSize="14" fontWeight="bold">Núcleo (Sin cambio)</text>
-          <text x="100" y="22" textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold">Capa Externa Tratada (Borurada)</text>
+          <text x="100" y="13" textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold">Capa Externa Tratada (Borurada)</text>
         </svg>
       )
     },
@@ -232,9 +232,6 @@ const App = () => {
         <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
           Fundamentos de la Borurización
         </h1>
-        <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-          Guía interactiva sobre el tratamiento termoquímico de superficies mediante la difusión de átomos de boro.
-        </p>
       </header>
 
       <main className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -253,7 +250,6 @@ const App = () => {
                 </h2>
               </div>
               <div className="mb-4 flex-1">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Explicación</h3>
                 <p className="text-slate-600 leading-relaxed text-sm">
                   {section.explanation}
                 </p>
@@ -261,10 +257,6 @@ const App = () => {
             </div>
             
             <div className="bg-slate-50 p-6">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
-                <span>Representación Visual</span>
-                <span className="h-px flex-1 bg-slate-200"></span>
-              </h3>
               <div className="mb-2 text-sm font-medium text-slate-700 text-center">
                 {section.visualTitle}
               </div>
@@ -277,7 +269,6 @@ const App = () => {
       </main>
 
       <footer className="max-w-5xl mx-auto mt-12 py-6 border-t border-slate-300 text-center text-slate-500 text-sm">
-        <p>Módulo Educativo de Ingeniería de Materiales • Generado Dinámicamente</p>
       </footer>
     </div>
   );

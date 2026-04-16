@@ -8,16 +8,11 @@ export default function App() {
       {/* Header */}
       <header className="bg-slate-900 text-white py-12 px-6 sm:px-12 shadow-md">
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
-            <BookOpen className="w-8 h-8 text-blue-400" />
-            <span className="text-blue-400 font-semibold tracking-wider uppercase text-sm">Módulo de Ingeniería de Materiales</span>
-          </div>
+       
           <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
             Reacciones químicas en la <span className="text-blue-400">carburización</span>
           </h1>
-          <p className="text-slate-300 text-lg max-w-2xl leading-relaxed">
-            Explora de manera visual e interactiva los principios químicos, termodinámicos y estructurales que gobiernan el enriquecimiento superficial del acero.
-          </p>
+      
         </div>
       </header>
 
@@ -139,11 +134,6 @@ export default function App() {
         />
 
       </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center">
-        <p>Módulo interactivo generado para el estudio de la Ingeniería de Superficies.</p>
-      </footer>
     </div>
   );
 }
@@ -402,10 +392,8 @@ const VisualAustenite = () => (
     </g>
   </svg>
 );
-
 const VisualDiffusion = () => (
   <svg viewBox="0 0 200 140" className="w-full max-w-sm">
-    {/* Metal representation as background gradient */}
     <defs>
       <linearGradient id="metalGrad" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stopColor="#1e293b" />
@@ -413,21 +401,42 @@ const VisualDiffusion = () => (
         <stop offset="100%" stopColor="#e2e8f0" />
       </linearGradient>
     </defs>
+
     <rect x="40" y="20" width="140" height="90" fill="url(#metalGrad)" opacity="0.2" rx="4" />
-    
+
     {/* Axes */}
     <line x1="40" y1="110" x2="180" y2="110" stroke="#64748b" strokeWidth="2" />
     <line x1="40" y1="20" x2="40" y2="110" stroke="#64748b" strokeWidth="2" />
-    
-    <text x="110" y="130" fontSize="10" fill="#64748b" textAnchor="middle">Profundidad en el material</text>
-    <text x="25" y="65" fontSize="10" fill="#64748b" textAnchor="middle" transform="rotate(-90, 25, 65)">% Carbono</text>
-    <text x="45" y="15" fontSize="8" fill="#1e293b" fontWeight="bold">Superficie</text>
-    <text x="165" y="15" fontSize="8" fill="#64748b" fontWeight="bold">Núcleo</text>
-    
-    {/* Diffusion Curve */}
-    <path d="M 40 30 Q 80 40 120 90 T 180 100" fill="none" stroke="#f59e0b" strokeWidth="3" />
-    
-    {/* Indication of Carbon rich area */}
+
+    <text x="110" y="130" fontSize="10" fill="#64748b" textAnchor="middle">
+      Profundidad en el material
+    </text>
+    <text
+      x="25"
+      y="65"
+      fontSize="10"
+      fill="#64748b"
+      textAnchor="middle"
+      transform="rotate(-90, 25, 65)"
+    >
+      % Carbono
+    </text>
+    <text x="45" y="15" fontSize="8" fill="#1e293b" fontWeight="bold">
+      Superficie
+    </text>
+    <text x="165" y="15" fontSize="8" fill="#64748b" fontWeight="bold">
+      Núcleo
+    </text>
+
+    {/* ✅ Curva corregida: nunca baja de y=110 */}
+    <path
+      d="M 40 30 Q 80 45 120 80 T 180 110"
+      fill="none"
+      stroke="#f59e0b"
+      strokeWidth="3"
+    />
+
+    {/* Carbon rich area */}
     <rect x="40" y="20" width="60" height="90" fill="url(#metalGrad)" opacity="0.4" />
   </svg>
 );
